@@ -53,6 +53,8 @@ namespace pi
             std::shared_ptr<Object> eval_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_float_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_bool_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_string_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_string_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
 
             std::shared_ptr<Object> eval_prefix(const std::shared_ptr<ast::Prefix> &node);
             std::shared_ptr<Object> eval_minus_prefix_operator_expression(std::shared_ptr<Object> & right);

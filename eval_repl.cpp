@@ -22,7 +22,7 @@ int main()
 
     while (true)
     {
-        std::cout << prompt;
+        std::cout << prompt << std::flush;
         string text;
         std::getline(std::cin, text);
 

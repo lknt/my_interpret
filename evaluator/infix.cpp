@@ -52,6 +52,17 @@ std::shared_ptr<Object> Evaluator::eval_infix(const std::shared_ptr<ast::Infix> 
                 return eval_float_infix_expression(op, left, right);
             }
         }
+        case Object::OBJECT_STRING:
+        {
+            if (right->type() == Object::OBJECT_STRING)
+            {
+                return eval_string_infix_expression(op, left, right);
+            }
+            else if (right->type() == Object::OBJECT_INTEGER)
+            {
+                return eval_string_integer_infix_expression(op, left, right);
+            }
+        }
         default:
             break;
     }
@@ -183,5 +194,58 @@ std::shared_ptr<Object> Evaluator::eval_bool_infix_expression(const std::string 
     }
 
 
+    return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
+}
+
+std::shared_ptr<Object> Evaluator::eval_string_infix_expression(const std::string &op,
+                                                                const std::shared_ptr<Object> &left,
+                                                                const std::shared_ptr<Object> &right) {
+    auto l = std::dynamic_pointer_cast<object::String>(left);
+    auto r = std::dynamic_pointer_cast<object::String>(right);
+    if (op == "+")
+    {
+        return new_string(l->m_value + r->m_value);
+    }
+    else if (op == "==")
+    {
+        return new_bool(l->m_value == r->m_value);
+    }
+    else if (op == "!=")
+    {
+        return new_bool(l->m_value == r->m_value);
+    }
+    else if (op == "<")
+    {
+        return new_bool(l->m_value < r->m_value);
+    }
+    else if (op == "<=")
+    {
+        return new_bool(l->m_value <= r->m_value);
+    }
+    else if (op == ">")
+    {
+        return new_bool(l->m_value > r->m_value);
+    }
+    else if (op == ">=")
+    {
+        return new_bool(l->m_value >= r->m_value);
+    }
+    return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
+}
+
+std::shared_ptr<Object> Evaluator::eval_string_integer_infix_expression(const std::string &op,
+                                                                        const std::shared_ptr<Object> &left,
+                                                                        const std::shared_ptr<Object> &right) {
+    auto l = std::dynamic_pointer_cast<object::String>(left);
+    auto r = std::dynamic_pointer_cast<object::Integer>(right);
+    if (op == "*")
+    {
+        string str;
+        for (int i = 0; i < r->m_value; i ++)
+        {
+            str += l->m_value;
+        }
+        return new_string(str);
+    }
     return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
 }
