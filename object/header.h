@@ -5,3 +5,4 @@
 #include <object/float.h>
 #include <object/integer.h>
 #include <object/error.h>
+#include <object/string.h>

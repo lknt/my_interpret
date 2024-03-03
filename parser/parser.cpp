@@ -37,6 +37,7 @@ std::map<Token::Type, Parser::prefix_parser_fn> Parser::m_prefix_parser_fns = {
         {Token::TOKEN_MINUS, &Parser::parse_prefix},
         {Token::TOKEN_TILDE, &Parser::parse_prefix},
         {Token::TOKEN_NOT, &Parser::parse_prefix},
+        {Token::TOKEN_STRING, &Parser::parse_string},
 };
 
 std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {

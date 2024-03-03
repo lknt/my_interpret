@@ -7,3 +7,4 @@
 #include <ast/float.h>
 #include <ast/prefix.h>
 #include <ast/program.h>
+#include <ast/string.h>

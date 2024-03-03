@@ -56,6 +56,8 @@ namespace pi
             bool is_letter(char ch) const;
             string read_number();
             string read_identifier();
+            string read_single_quote_string();
+            string read_double_quote_string();
             Token new_token(Token::Type type, const string & literal);
 
         public:

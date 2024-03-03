@@ -116,6 +116,70 @@ Token Lexer::new_token(Token::Type type, const std::string &literal) {
     return token;
 }
 
+string Lexer::read_single_quote_string()
+{
+    string str;
+    while(true)
+    {
+        read_char();
+        if (m_ch == '\'' || m_ch == 0)
+        {
+            break;
+        }
+        /*
+         * 对'转义*/
+        else if (m_ch == '\\' && peek_char() == '\'')
+        {
+            read_char();
+        }
+        str += m_ch;
+    }
+    return str;
+}
+
+string Lexer::read_double_quote_string() {
+    string str;
+    while(true)
+    {
+        read_char();
+        if (m_ch == '"' || m_ch == 0)
+        {
+            break;
+        }
+            /*
+             * 对'转义*/
+        else if (m_ch == '\\')
+        {
+            switch (peek_char()) {
+                case 'n':
+                    read_char();
+                    m_ch = '\n';
+                    break;
+                case 'r':
+                    read_char();
+                    m_ch = '\r';
+                    break;
+                case 't':
+                    read_char();
+                    m_ch = '\t';
+                    break;
+                case '"':
+                    read_char();
+                    m_ch = '"';
+                    break;
+                case '\\':
+                    read_char();
+                    m_ch = '\\';
+                    break;
+                    /*到这里无需省略转义符号*/
+                default:
+                    break;
+            }
+        }
+        str += m_ch;
+    }
+    return str;
+}
 //
 Token Lexer::next_token() {
     read_char();
@@ -286,7 +350,6 @@ Token Lexer::next_token() {
                 return new_token(Token::TOKEN_NOT, literal);
             }
         }
-
         case '(':
         {
             string literal;
@@ -299,7 +362,18 @@ Token Lexer::next_token() {
             literal += m_ch;
             return new_token(Token::TOKEN_RPAREN, literal);
         }
-
+        case '\'':
+        {
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_STRING, read_single_quote_string());
+        }
+        case '\"':
+        {
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_STRING, read_double_quote_string());
+        }
         case 0:
         {
             return new_token(Token::TOKEN_EOF, "");

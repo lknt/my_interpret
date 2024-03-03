@@ -36,6 +36,7 @@ namespace pi
                 NODE_EXPRESSION_STATEMENT,
                 NODE_PROGRAM,
                 NODE_PREFIX,
+                NODE_STRING,
             };
             Node() {}
             Node(Type type) : m_type(type){}

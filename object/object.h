@@ -37,6 +37,7 @@ namespace pi
                 OBJECT_INTEGER,
                 OBJECT_FLOAT,
                 OBJECT_BOOL,
+                OBJECT_STRING,
             };
             Object(){}
             Object(Type type) : m_type(type) {}
@@ -50,6 +51,7 @@ namespace pi
             static std::shared_ptr<Object> new_integer(int64_t value);
             static std::shared_ptr<Object> new_float(double value);
             static std::shared_ptr<Object> new_bool(bool value);
+            static std::shared_ptr<Object> new_string(string value);
 
         protected:
             Type m_type;

@@ -12,6 +12,8 @@ std::map<Object::Type, string> Object::m_names = {
         {OBJECT_INTEGER, "integer"},
         {OBJECT_FLOAT, "float"},
         {OBJECT_BOOL, "bool"},
+        {OBJECT_STRING, "string"},
+
 
 };
 
@@ -47,4 +49,8 @@ std::shared_ptr<Object> Object::new_float(double value) {
 
 std::shared_ptr<Object> Object::new_bool(bool value) {
     return std::make_shared<Bool>(value);
+}
+
+std::shared_ptr<Object> Object::new_string(std::string value) {
+    return std::make_shared<String>(value);
 }

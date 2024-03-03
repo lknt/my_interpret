@@ -68,6 +68,7 @@ namespace pi
                 TOKEN_IDENTIFIER,
                 TOKEN_TRUE,   //true
                 TOKEN_FALSE,  //false
+                TOKEN_STRING,
             };
 
             Token();

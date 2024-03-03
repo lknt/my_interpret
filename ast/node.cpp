@@ -8,7 +8,8 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_INFIX, "Infix"},
         {NODE_EXPRESSION_STATEMENT, "Expression"},
         {NODE_PROGRAM, "Program"},
-        {NODE_PREFIX, "Prefix"}
+        {NODE_PREFIX, "Prefix"},
+        {NODE_STRING, "String"},
 
 };
 

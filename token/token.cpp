@@ -13,6 +13,7 @@ std::map<Token::Type, string> Token::m_name = {
         {Token::TOKEN_ILLEGAL, "illegal"},
         {Token::TOKEN_INTEGER, "integer"},
         {Token::TOKEN_FLOAT, "float"},
+        {Token::TOKEN_STRING, "string"},
         {Token::TOKEN_EOF, "eof"},
         {Token::TOKEN_PLUS, "+"},
         {Token::TOKEN_MINUS, "-"},
