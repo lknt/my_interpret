@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "my_interpret",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ast::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ast-Debug-2390fc37be7eebc73e2c.json",
+					"name" : "ast",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "eval::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-eval-Debug-dedc89e0b45d89f95655.json",
+					"name" : "eval",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "eval_repl::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-eval_repl-Debug-c31c3a8d19d345642206.json",
+					"name" : "eval_repl",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_interpret::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_interpret-Debug-05188ce32b87b958d01d.json",
+					"name" : "my_interpret",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "H:/interprete/my_interprete finish float/cmake-build-debug",
+		"source" : "H:/interprete/my_interprete finish float"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
