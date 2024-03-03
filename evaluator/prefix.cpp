@@ -17,6 +17,10 @@ std::shared_ptr<Object> Evaluator::eval_prefix(const std::shared_ptr<ast::Prefix
     {
         return eval_tilde_prefix_operator_expression(right);
     }
+    else if (op == "!")
+    {
+        return eval_bang_prefix_operator_expression(right);
+    }
     return new_error("unknown operator :%s %s", op.c_str(), right->name().c_str());
 }
 
@@ -44,6 +48,25 @@ std::shared_ptr<Object> Evaluator::eval_tilde_prefix_operator_expression(std::sh
         default:
         {
             return new_error("unknown operator: ~%s", right->name().c_str());
+        }
+    }
+}
+
+std::shared_ptr<Object> Evaluator::eval_bang_prefix_operator_expression(std::shared_ptr<Object> &right) {
+    switch (right->type()) {
+        case Object::OBJECT_BOOL:
+        {
+            auto r = std::dynamic_pointer_cast<object::Bool>(right);
+            return new_bool(!(r->m_value));
+        }
+        case Object::OBJECT_INTEGER:
+        {
+            auto r = std::dynamic_pointer_cast<object::Integer>(right);
+            return new_bool(!(r->m_value));
+        }
+        default:
+        {
+            return new_bool(false);
         }
     }
 }

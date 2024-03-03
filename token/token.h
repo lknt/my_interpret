@@ -57,6 +57,11 @@ namespace pi
                 TOKEN_LE,  // <=
                 TOKEN_NE,  // !=
                 TOKEN_EQ,  //==
+
+                TOKEN_AND, //&&
+                TOKEN_OR, //||
+                TOKEN_NOT,  // !
+
                 TOKEN_LPAREN,
                 TOKEN_RPAREN,
                 TOKEN_SEMICOLON,

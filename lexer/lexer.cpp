@@ -160,15 +160,36 @@ Token Lexer::next_token() {
         }
         case '&':
         {
-            string literal = "";
-            literal += m_ch;
-            return new_token(Token::TOKEN_BIT_AND, literal);
+            if (peek_char() == '&')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_AND, literal);
+            }
+            else {
+                string literal;
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_AND, literal);
+            }
+
         }
         case '|':
         {
-            string literal = "";
-            literal += m_ch;
-            return new_token(Token::TOKEN_BIT_OR, literal);
+            if (peek_char() == '|')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_OR, literal);
+            }
+            else {
+                string literal;
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_OR, literal);
+            }
         }
         case '^':
         {
@@ -262,11 +283,10 @@ Token Lexer::next_token() {
             {
                 string literal;
                 literal += m_ch;
-                read_char();
-                literal += m_ch;
-                return new_token(Token::TOKEN_ILLEGAL, literal);
+                return new_token(Token::TOKEN_NOT, literal);
             }
         }
+
         case '(':
         {
             string literal;

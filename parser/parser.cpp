@@ -11,6 +11,8 @@ std::map<Token::Type, int> Parser::m_precedences = {
         {Token::TOKEN_BIT_XOR, LOGIC},
         {Token::TOKEN_BIT_LSHIFT, LOGIC},
         {Token::TOKEN_BIT_RSHIFT, LOGIC},
+        {Token::TOKEN_OR, LOGIC},
+        {Token::TOKEN_AND, LOGIC},
         {Token::TOKEN_LE, COMPARE},
         {Token::TOKEN_GE, COMPARE},
         {Token::TOKEN_LT, COMPARE},
@@ -23,6 +25,7 @@ std::map<Token::Type, int> Parser::m_precedences = {
         {Token::TOKEN_SLASH, PRODUCT},
         {Token::TOKEN_MODULO, PRODUCT},
 
+
 };
 
 std::map<Token::Type, Parser::prefix_parser_fn> Parser::m_prefix_parser_fns = {
@@ -33,7 +36,7 @@ std::map<Token::Type, Parser::prefix_parser_fn> Parser::m_prefix_parser_fns = {
         {Token::TOKEN_LPAREN, &Parser::parse_group},
         {Token::TOKEN_MINUS, &Parser::parse_prefix},
         {Token::TOKEN_TILDE, &Parser::parse_prefix},
-
+        {Token::TOKEN_NOT, &Parser::parse_prefix},
 };
 
 std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {
@@ -53,6 +56,9 @@ std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {
         {Token::TOKEN_GT, &Parser::parse_infix},
         {Token::TOKEN_EQ, &Parser::parse_infix},
         {Token::TOKEN_NE, &Parser::parse_infix},
+        {Token::TOKEN_AND, &Parser::parse_infix},
+        {Token::TOKEN_OR, &Parser::parse_infix},
+
 };
 
 Parser::Parser() {}

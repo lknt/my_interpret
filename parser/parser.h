@@ -70,11 +70,11 @@ namespace pi
             enum Precedence
             {
                 LOWEST = 0,
-                LOGIC,  //& | ^ << >>
-                COMPARE,
+                LOGIC,  //& | ^ << >>  && ||
+                COMPARE,  // <=  >=  ==
                 SUM,   // + -
                 PRODUCT, // *  /  %
-                PREFIX, // -a  ~a  !a
+                PREFIX, // -a  ~a  !a   !a
             };
             Parser();
             Parser(std::shared_ptr<Lexer>& lexer);

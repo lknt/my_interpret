@@ -31,6 +31,10 @@ std::map<Token::Type, string> Token::m_name = {
         {Token::TOKEN_GE, ">="},
         {Token::TOKEN_NE, "!="},
         {Token::TOKEN_EQ, "=="},
+        {Token::TOKEN_AND, "&&"},
+        {Token::TOKEN_OR, "||"},
+        {Token::TOKEN_NOT, "!"},
+
         {Token::TOKEN_LPAREN, "("},
         {Token::TOKEN_RPAREN, ")"},
         {Token::TOKEN_SEMICOLON, ";"},
