@@ -1,6 +1,0 @@
-H:/interprete/my_interprete finish float/cmake-build-debug/CMakeFiles/my_interpret.dir
-H:/interprete/my_interprete finish float/cmake-build-debug/CMakeFiles/ast.dir
-H:/interprete/my_interprete finish float/cmake-build-debug/CMakeFiles/eval.dir
-H:/interprete/my_interprete finish float/cmake-build-debug/CMakeFiles/eval_repl.dir
-H:/interprete/my_interprete finish float/cmake-build-debug/CMakeFiles/edit_cache.dir
-H:/interprete/my_interprete finish float/cmake-build-debug/CMakeFiles/rebuild_cache.dir
