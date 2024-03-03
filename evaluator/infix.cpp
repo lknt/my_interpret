@@ -71,6 +71,26 @@ std::shared_ptr<Object> Evaluator::eval_integer_infix_expression(const std::stri
      {
          return new_integer(l->m_value % r->m_value);
      }
+     else if (op == "&")
+     {
+         return new_integer(l->m_value & r->m_value);
+     }
+     else if (op == "|")
+     {
+         return new_integer(l->m_value | r->m_value);
+     }
+     else if (op == "^")
+     {
+         return new_integer(l->m_value ^ r->m_value);
+     }
+     else if (op == "<<")
+     {
+         return new_integer(l->m_value << r->m_value);
+     }
+     else if (op == ">>")
+     {
+         return new_integer(l->m_value >> r->m_value);
+     }
      return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
 }
 

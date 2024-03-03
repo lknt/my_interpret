@@ -24,7 +24,7 @@ std::map<Token::Type, string> Token::m_name = {
         {Token::TOKEN_BIT_OR, "|"},
         {Token::TOKEN_BIT_XOR, "^"},
         {Token::TOKEN_BIT_LSHIFT, "<<"},
-        {Token::TOKEN__BIT_RSHIFT, ">>"},
+        {Token::TOKEN_BIT_RSHIFT, ">>"},
         {Token::TOKEN_LPAREN, "("},
         {Token::TOKEN_RPAREN, ")"},
         {Token::TOKEN_SEMICOLON, ";"},

@@ -70,6 +70,7 @@ namespace pi
             enum Precedence
             {
                 LOWEST = 0,
+                LOGIC,  //& | ^ << >>
                 SUM,   // + -
                 PRODUCT, // *  /  %
                 PREFIX, // -a  ~a  !a

@@ -59,53 +59,53 @@ int main()
 //    ofs << json.str();
 //    ofs.close();
 
-    Program program;
-    Integer Int1(7), Int2(8);
-
-    Infix infix;
-    infix.m_operator = "+";
-    infix.m_left = std::make_shared<Integer>(Int1);
-    infix.m_right = std::make_shared<Integer>(Int2);
-
-
-    Expression_Statement exp1;
-    exp1.m_expression = std::make_shared<Integer>(Int1);
-
-    Expression_Statement exp2;
-    exp2.m_expression = std::make_shared<Infix>(infix);
-
-
-    program.m_statement.push_back(std::make_shared<Expression_Statement>(exp1));
-
-    program.m_statement.push_back(std::make_shared<Expression_Statement>(exp2));
-
-    Json tokens;
-    tokens.append(program.json());
-    Json json;
-    json["tokens"] = tokens;
-    std::ofstream ofs("./../token.json");
-    ofs << json.str();
-    ofs.close();
-
-    /*测试lexer*/
-//    auto lexer = new Lexer("./../code.pi");
+//    Program program;
+//    Integer Int1(7), Int2(8);
+//
+//    Infix infix;
+//    infix.m_operator = "+";
+//    infix.m_left = std::make_shared<Integer>(Int1);
+//    infix.m_right = std::make_shared<Integer>(Int2);
+//
+//
+//    Expression_Statement exp1;
+//    exp1.m_expression = std::make_shared<Integer>(Int1);
+//
+//    Expression_Statement exp2;
+//    exp2.m_expression = std::make_shared<Infix>(infix);
+//
+//
+//    program.m_statement.push_back(std::make_shared<Expression_Statement>(exp1));
+//
+//    program.m_statement.push_back(std::make_shared<Expression_Statement>(exp2));
+//
 //    Json tokens;
-//    while (true)
-//    {
-//        auto token = lexer->next_token();
-//        std::cout << token.show() << std::endl;
-//        tokens.append(token.json());
-//        if (token.type() == Token::TOKEN_EOF)
-//        {
-//            break;
-//        }
-//    }
+//    tokens.append(program.json());
 //    Json json;
 //    json["tokens"] = tokens;
-//
 //    std::ofstream ofs("./../token.json");
 //    ofs << json.str();
 //    ofs.close();
+
+    /*测试lexer*/
+    auto lexer = new Lexer("./../code.pi");
+    Json tokens;
+    while (true)
+    {
+        auto token = lexer->next_token();
+        std::cout << token.show() << std::endl;
+        tokens.append(token.json());
+        if (token.type() == Token::TOKEN_EOF)
+        {
+            break;
+        }
+    }
+    Json json;
+    json["tokens"] = tokens;
+
+    std::ofstream ofs("./../token.json");
+    ofs << json.str();
+    ofs.close();
 
 
     /* 测试token*/

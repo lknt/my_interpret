@@ -6,6 +6,11 @@
 using namespace pi::parser;
 
 std::map<Token::Type, int> Parser::m_precedences = {
+        {Token::TOKEN_BIT_AND, LOGIC},
+        {Token::TOKEN_BIT_OR, LOGIC},
+        {Token::TOKEN_BIT_XOR, LOGIC},
+        {Token::TOKEN_BIT_LSHIFT, LOGIC},
+        {Token::TOKEN_BIT_RSHIFT, LOGIC},
         {Token::TOKEN_PLUS, SUM},
         {Token::TOKEN_MINUS, SUM},
         {Token::TOKEN_ASTERISK, PRODUCT},
@@ -28,6 +33,11 @@ std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {
         {Token::TOKEN_ASTERISK, &Parser::parse_infix},
         {Token::TOKEN_SLASH, &Parser::parse_infix},
         {Token::TOKEN_MODULO, &Parser::parse_infix},
+        {Token::TOKEN_BIT_AND, &Parser::parse_infix},
+        {Token::TOKEN_BIT_OR, &Parser::parse_infix},
+        {Token::TOKEN_BIT_XOR, &Parser::parse_infix},
+        {Token::TOKEN_BIT_LSHIFT, &Parser::parse_infix},
+        {Token::TOKEN_BIT_RSHIFT, &Parser::parse_infix},
 };
 
 Parser::Parser() {}

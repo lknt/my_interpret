@@ -138,9 +138,65 @@ Token Lexer::next_token() {
             literal += m_ch;
             return new_token(Token::TOKEN_TILDE, literal);
         }
-        case '(':
+        case '&':
         {
             string literal = "";
+            literal += m_ch;
+            return new_token(Token::TOKEN_BIT_AND, literal);
+        }
+        case '|':
+        {
+            string literal = "";
+            literal += m_ch;
+            return new_token(Token::TOKEN_BIT_OR, literal);
+        }
+        case '^':
+        {
+            string literal = "";
+            literal += m_ch;
+            return new_token(Token::TOKEN_BIT_XOR, literal);
+        }
+        case '<':
+        {
+            if (peek_char() == '<')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_LSHIFT, literal);
+            }
+            else
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_ILLEGAL, literal);
+            }
+        }
+        case '>':
+        {
+            if (peek_char() == '>')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_RSHIFT, literal);
+            }
+            else
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_ILLEGAL, literal);
+            }
+        }
+        case '(':
+        {
+            string literal;
             literal += m_ch;
             return new_token(Token::TOKEN_LPAREN, literal);
         }
@@ -150,6 +206,7 @@ Token Lexer::next_token() {
             literal += m_ch;
             return new_token(Token::TOKEN_RPAREN, literal);
         }
+
         case 0:
         {
             return new_token(Token::TOKEN_EOF, "");

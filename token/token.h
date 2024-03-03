@@ -50,7 +50,7 @@ namespace pi
                 TOKEN_BIT_OR,      //|
                 TOKEN_BIT_XOR,     //^
                 TOKEN_BIT_LSHIFT,  // <<
-                TOKEN__BIT_RSHIFT, // >>
+                TOKEN_BIT_RSHIFT, // >>
                 TOKEN_LPAREN,
                 TOKEN_RPAREN,
                 TOKEN_SEMICOLON,
