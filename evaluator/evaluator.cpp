@@ -33,6 +33,11 @@ std::shared_ptr<Object> Evaluator::new_float(double value)
     return Object::new_float(value);
 }
 
+std::shared_ptr<Object> Evaluator::new_bool(bool value)
+{
+    return Object::new_bool(value);
+}
+
 std::shared_ptr<Object> Evaluator::cast_from_integer_to_float(const std::shared_ptr<Object> & obj)
 {
     auto i = std::dynamic_pointer_cast<object::Integer>(obj);
@@ -63,6 +68,11 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node) 
         {
             auto e = std::dynamic_pointer_cast<ast::Float>(node);
             return eval_float(e);
+        }
+        case Node::NODE_BOOL:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Bool>(node);
+            return eval_bool(e);
         }
         case Node::NODE_INFIX:
         {

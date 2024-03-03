@@ -77,14 +77,29 @@ void Lexer::skip_white_space()
     }
 }
 
-bool Lexer::is_digit(char ch) {
+bool Lexer::is_digit(char ch) const
+{
     return ch <= '9' && ch >= '0';
+}
+
+bool Lexer::is_letter(char ch) const
+{
+    return (ch <= 'z' && ch >= 'a') || (ch <= 'Z' && ch >= 'A') || m_ch == '_';
 }
 
 string Lexer::read_number()
 {
     int pos = m_pos;
     while(isdigit(m_ch))
+    {
+        read_char();
+    }
+    return m_input.substr(pos, m_pos - pos);
+}
+
+string Lexer::read_identifier() {
+    int pos = m_pos;
+    while(is_letter(m_ch) || is_digit(m_ch))
     {
         read_char();
     }
@@ -226,6 +241,13 @@ Token Lexer::next_token() {
                 }
                 unread_char();
                 return new_token(Token::TOKEN_INTEGER, integer);
+            }
+            else if (is_letter(m_ch))
+            {
+                string literal = read_identifier();
+                Token::Type type = Token::lookup(literal);
+                unread_char();
+                return new_token(type, literal);
             }
             else
             {

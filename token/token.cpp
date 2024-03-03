@@ -28,6 +28,13 @@ std::map<Token::Type, string> Token::m_name = {
         {Token::TOKEN_LPAREN, "("},
         {Token::TOKEN_RPAREN, ")"},
         {Token::TOKEN_SEMICOLON, ";"},
+        {Token::TOKEN_TRUE, "true"},
+        {Token::TOKEN_FALSE, "false"},
+};
+
+std::map<string, Token::Type> Token::m_keywords = {
+        {"true", TOKEN_TRUE},
+        {"false", TOKEN_FALSE},
 };
 
 Token::Token() : m_type(TOKEN_ILLEGAL){
@@ -78,5 +85,15 @@ Token& Token::operator=(const Token &other)
     m_type = other.m_type;
     m_literal = other.m_literal;
     return *this;
+}
+
+Token::Type Token::lookup(const string & identifier)
+{
+    auto it = m_keywords.find(identifier);
+    if (it != m_keywords.end())
+    {
+        return it->second;
+    }
+    return TOKEN_IDENTIFIER;
 }
 

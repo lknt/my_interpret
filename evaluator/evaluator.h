@@ -27,6 +27,7 @@ namespace pi
             std::shared_ptr<Object> new_error(const char * format, ...);
             std::shared_ptr<Object> new_integer(int64_t value);
             std::shared_ptr<Object> new_float(double value);
+            std::shared_ptr<Object> new_bool(bool value);
             std::shared_ptr<Object> cast_from_integer_to_float(const std::shared_ptr<Object> & obj);
 
             /*
@@ -44,7 +45,7 @@ namespace pi
             std::shared_ptr<Object> eval_program(const std::list<std::shared_ptr<ast::Statement>>& stmt);
             std::shared_ptr<Object> eval_integer(const std::shared_ptr<ast::Integer> & node);
             std::shared_ptr<Object> eval_float(const std::shared_ptr<ast::Float> & node);
-
+            std::shared_ptr<Object> eval_bool(const std::shared_ptr<ast::Bool> & node);
 
             std::shared_ptr<Object> eval_infix(const std::shared_ptr<ast::Infix> &right);
             std::shared_ptr<Object> eval_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);

@@ -51,8 +51,10 @@ namespace pi
             void read_char();
             char peek_char();
             void unread_char();
-            bool is_digit(char ch);
+            bool is_digit(char ch) const;
+            bool is_letter(char ch) const;
             string read_number();
+            string read_identifier();
             Token new_token(Token::Type type, const string & literal);
 
         public:

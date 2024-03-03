@@ -31,6 +31,7 @@ namespace pi
             {
                 NODE_INTEGER = 0,
                 NODE_FLOAT,
+                NODE_BOOL,
                 NODE_INFIX,
                 NODE_EXPRESSION_STATEMENT,
                 NODE_PROGRAM,

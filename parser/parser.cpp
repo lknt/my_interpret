@@ -22,9 +22,12 @@ std::map<Token::Type, int> Parser::m_precedences = {
 std::map<Token::Type, Parser::prefix_parser_fn> Parser::m_prefix_parser_fns = {
         {Token::TOKEN_INTEGER, &Parser::parse_integer},
         {Token::TOKEN_FLOAT, &Parser::parse_float},
+        {Token::TOKEN_TRUE, &Parser::parse_bool},
+        {Token::TOKEN_FALSE, &Parser::parse_bool},
         {Token::TOKEN_LPAREN, &Parser::parse_group},
         {Token::TOKEN_MINUS, &Parser::parse_prefix},
         {Token::TOKEN_TILDE, &Parser::parse_prefix},
+
 };
 
 std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {

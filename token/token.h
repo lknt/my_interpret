@@ -54,6 +54,9 @@ namespace pi
                 TOKEN_LPAREN,
                 TOKEN_RPAREN,
                 TOKEN_SEMICOLON,
+                TOKEN_IDENTIFIER,
+                TOKEN_TRUE,   //true
+                TOKEN_FALSE,  //false
             };
 
             Token();
@@ -66,6 +69,7 @@ namespace pi
             Json json() const;
 
             Token & operator=(const Token &other);
+            static Type lookup(const string & identifier);
             friend std::ostream & operator<<(std::ostream& out, const Token tk)
             {
                 out << tk.show() << " ";
@@ -76,7 +80,7 @@ namespace pi
             string m_literal;
         public:
             static std::map<Type, string> m_name;
-
+            static std::map<string, Type> m_keywords;
 
         };
 

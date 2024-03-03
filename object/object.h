@@ -36,6 +36,7 @@ namespace pi
                 OBJECT_ERROR = 0,
                 OBJECT_INTEGER,
                 OBJECT_FLOAT,
+                OBJECT_BOOL,
             };
             Object(){}
             Object(Type type) : m_type(type) {}
@@ -48,7 +49,7 @@ namespace pi
             static std::shared_ptr<Object> new_error(const char * format, ...);
             static std::shared_ptr<Object> new_integer(int64_t value);
             static std::shared_ptr<Object> new_float(double value);
-
+            static std::shared_ptr<Object> new_bool(bool value);
 
         protected:
             Type m_type;
