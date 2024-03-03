@@ -51,6 +51,7 @@ namespace pi
             void read_char();
             char peek_char();
             void unread_char();
+//            bool is_space(char ch) const;
             bool is_digit(char ch) const;
             bool is_letter(char ch) const;
             string read_number();

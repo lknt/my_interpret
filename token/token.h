@@ -51,6 +51,12 @@ namespace pi
                 TOKEN_BIT_XOR,     //^
                 TOKEN_BIT_LSHIFT,  // <<
                 TOKEN_BIT_RSHIFT, // >>
+                TOKEN_LT,  // <
+                TOKEN_GT,  // >
+                TOKEN_GE,  // >=
+                TOKEN_LE,  // <=
+                TOKEN_NE,  // !=
+                TOKEN_EQ,  //==
                 TOKEN_LPAREN,
                 TOKEN_RPAREN,
                 TOKEN_SEMICOLON,

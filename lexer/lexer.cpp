@@ -77,6 +77,11 @@ void Lexer::skip_white_space()
     }
 }
 
+//bool Lexer::is_space(char ch) const
+//{
+//    return ch == ' ' || ch == '\t' || ch == '\n';
+//}
+
 bool Lexer::is_digit(char ch) const
 {
     return ch <= '9' && ch >= '0';
@@ -181,13 +186,19 @@ Token Lexer::next_token() {
                 literal += m_ch;
                 return new_token(Token::TOKEN_BIT_LSHIFT, literal);
             }
-            else
+            else if (peek_char() == '=')
             {
                 string literal;
                 literal += m_ch;
                 read_char();
                 literal += m_ch;
-                return new_token(Token::TOKEN_ILLEGAL, literal);
+                return new_token(Token::TOKEN_LE, literal);
+            }
+            else
+            {
+                string literal;
+                literal += m_ch;
+                return new_token(Token::TOKEN_LT, literal);
             }
         }
         case '>':
@@ -199,6 +210,53 @@ Token Lexer::next_token() {
                 read_char();
                 literal += m_ch;
                 return new_token(Token::TOKEN_BIT_RSHIFT, literal);
+            }
+            else if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_GE, literal);
+            }
+            else
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_GT, literal);
+            }
+        }
+        case '=':
+        {
+            if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_EQ, literal);
+            }
+            else
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_ILLEGAL, literal);
+            }
+        }
+
+        case '!':
+        {
+            if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_NE, literal);
             }
             else
             {

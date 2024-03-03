@@ -71,6 +71,7 @@ namespace pi
             {
                 LOWEST = 0,
                 LOGIC,  //& | ^ << >>
+                COMPARE,
                 SUM,   // + -
                 PRODUCT, // *  /  %
                 PREFIX, // -a  ~a  !a

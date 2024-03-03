@@ -11,6 +11,12 @@ std::map<Token::Type, int> Parser::m_precedences = {
         {Token::TOKEN_BIT_XOR, LOGIC},
         {Token::TOKEN_BIT_LSHIFT, LOGIC},
         {Token::TOKEN_BIT_RSHIFT, LOGIC},
+        {Token::TOKEN_LE, COMPARE},
+        {Token::TOKEN_GE, COMPARE},
+        {Token::TOKEN_LT, COMPARE},
+        {Token::TOKEN_GT, COMPARE},
+        {Token::TOKEN_EQ, COMPARE},
+        {Token::TOKEN_NE, COMPARE},
         {Token::TOKEN_PLUS, SUM},
         {Token::TOKEN_MINUS, SUM},
         {Token::TOKEN_ASTERISK, PRODUCT},
@@ -41,6 +47,12 @@ std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {
         {Token::TOKEN_BIT_XOR, &Parser::parse_infix},
         {Token::TOKEN_BIT_LSHIFT, &Parser::parse_infix},
         {Token::TOKEN_BIT_RSHIFT, &Parser::parse_infix},
+        {Token::TOKEN_LE, &Parser::parse_infix},
+        {Token::TOKEN_GE, &Parser::parse_infix},
+        {Token::TOKEN_LT, &Parser::parse_infix},
+        {Token::TOKEN_GT, &Parser::parse_infix},
+        {Token::TOKEN_EQ, &Parser::parse_infix},
+        {Token::TOKEN_NE, &Parser::parse_infix},
 };
 
 Parser::Parser() {}
@@ -113,7 +125,7 @@ int Parser::peek_token_precedence()
 void Parser::no_prefix_parse_fn_error(Token::Type type)
 {
     std::ostringstream oss;
-    oss << "no prefix parse function for " << Token::m_name[type] << " " << m_curr.literal();
+    oss << "no prefix parse function for " << Token::m_name[type];
     m_errors.push_back((oss.str()));
 }
 
