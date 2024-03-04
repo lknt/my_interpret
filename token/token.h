@@ -86,6 +86,9 @@ namespace pi
 
                 TOKEN_INCREASE,
                 TOKEN_DECREASE,
+
+                TOKEN_QUESTION,
+                TOKEN_COLON,
             };
 
             Token();

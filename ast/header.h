@@ -13,3 +13,4 @@
 #include <ast/assign.h>
 #include <ast/compound.h>
 #include <ast/postfix.h>
+#include <ast/ternary.h>

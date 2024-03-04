@@ -9,6 +9,21 @@ bool Evaluator::is_error(const std::shared_ptr<Object> &obj)
 {
     return obj->type() == Object::OBJECT_ERROR;
 }
+
+bool Evaluator::is_true(const std::shared_ptr<Object> &obj) {
+    switch (obj->type()) {
+        case Object::OBJECT_NULL:
+        {
+            return false;
+        }
+        case Object::OBJECT_BOOL:
+        {
+            auto b = std::dynamic_pointer_cast<object::Bool>(obj);
+            return b->m_value == true;
+        }
+    }
+
+}
 std::shared_ptr<Object> Evaluator::new_error(const char * format, ...)
 {
     char buf[1024] = {0};
@@ -140,6 +155,11 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node, 
         {
             auto e = std::dynamic_pointer_cast<ast::Compound>(node);
             return eval_compound(e, env);
+        }
+        case Node::NODE_TERNARY:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Ternary>(node);
+            return eval_ternary(e, env);
         }
         default:
         {

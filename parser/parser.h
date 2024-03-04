@@ -72,6 +72,7 @@ namespace pi
                 LOWEST = 0,
                 ASSIGN,  //=   += -= /=
                 LOGIC,  //& | ^ << >>  && ||
+                TERNARY,
                 COMPARE,  // <=  >=  ==
                 SUM,   // + -
                 PRODUCT, // *  /  %
@@ -123,6 +124,8 @@ namespace pi
             std::shared_ptr<Expression> parse_infix(const std::shared_ptr<Expression>&);
             std::shared_ptr<Expression> parse_assign(const std::shared_ptr<Expression>&);
             std::shared_ptr<Expression> parse_compound(const std::shared_ptr<Expression>&);
+
+            std::shared_ptr<Expression> parse_ternary(const std::shared_ptr<Expression>&);
 
             //postfix
             std::shared_ptr<Expression> parse_postfix(const std::shared_ptr<Expression>&);

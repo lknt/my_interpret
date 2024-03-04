@@ -26,6 +26,7 @@ namespace pi
             ~Evaluator() {}
 
             bool is_error(const std::shared_ptr<Object> &obj);
+            bool is_true(const std::shared_ptr<Object> &obj);
             std::shared_ptr<Object> new_error(const char * format, ...);
             std::shared_ptr<Object> new_integer(int64_t value);
             std::shared_ptr<Object> new_float(double value);
@@ -54,6 +55,8 @@ namespace pi
             std::shared_ptr<Object> eval_identifier(const std::shared_ptr<ast::Identifier> & node, Environment * env);
             std::shared_ptr<Object> eval_assign(const std::shared_ptr<ast::Assign> & node, Environment * env);
             std::shared_ptr<Object> eval_compound(const std::shared_ptr<ast::Compound> & node, Environment * env);
+            std::shared_ptr<Object> eval_ternary(const std::shared_ptr<ast::Ternary> & node, Environment * env);
+
 
             std::shared_ptr<Object> eval_null();
 

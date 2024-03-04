@@ -59,6 +59,9 @@ std::map<Token::Type, string> Token::m_name = {
         {TOKEN_INCREASE,"++"},
         {TOKEN_DECREASE,"--"},
 
+        {TOKEN_QUESTION, "?"},
+        {TOKEN_COLON, ":"}
+
 };
 
 std::map<string, Token::Type> Token::m_keywords = {

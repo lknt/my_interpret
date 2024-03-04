@@ -15,6 +15,7 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_ASSIGN, "Assign"},
         {NODE_COMPOUND, "Compound"},
         {NODE_POSTFIX, "Postfix"},
+        {NODE_TERNARY, "Ternary"},
 
 };
 
