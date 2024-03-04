@@ -10,6 +10,7 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_PROGRAM, "Program"},
         {NODE_PREFIX, "Prefix"},
         {NODE_STRING, "String"},
+        {NODE_NULL, "Null"},
 
 };
 

@@ -29,6 +29,7 @@ namespace pi
             std::shared_ptr<Object> new_float(double value);
             std::shared_ptr<Object> new_bool(bool value);
             std::shared_ptr<Object> new_string(string value);
+            std::shared_ptr<Object> new_null();
             std::shared_ptr<Object> cast_from_integer_to_float(const std::shared_ptr<Object> & obj);
 
             /*
@@ -48,6 +49,7 @@ namespace pi
             std::shared_ptr<Object> eval_float(const std::shared_ptr<ast::Float> & node);
             std::shared_ptr<Object> eval_bool(const std::shared_ptr<ast::Bool> & node);
             std::shared_ptr<Object> eval_string(const std::shared_ptr<ast::String> & node);
+            std::shared_ptr<Object> eval_null();
 
             std::shared_ptr<Object> eval_infix(const std::shared_ptr<ast::Infix> &right);
             std::shared_ptr<Object> eval_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
@@ -55,11 +57,14 @@ namespace pi
             std::shared_ptr<Object> eval_bool_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_string_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_string_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_null_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_diff_type_operator_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
 
             std::shared_ptr<Object> eval_prefix(const std::shared_ptr<ast::Prefix> &node);
             std::shared_ptr<Object> eval_minus_prefix_operator_expression(std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_tilde_prefix_operator_expression(std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_bang_prefix_operator_expression(std::shared_ptr<Object> & right);
+
 
         };
     }

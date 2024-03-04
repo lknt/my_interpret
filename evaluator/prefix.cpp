@@ -64,6 +64,11 @@ std::shared_ptr<Object> Evaluator::eval_bang_prefix_operator_expression(std::sha
             auto r = std::dynamic_pointer_cast<object::Integer>(right);
             return new_bool(!(r->m_value));
         }
+        case Object::OBJECT_NULL:
+        {
+            auto r = std::dynamic_pointer_cast<object::Null>(right);
+            return new_bool(true);
+        }
         default:
         {
             return new_bool(false);

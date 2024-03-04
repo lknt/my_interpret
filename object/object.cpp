@@ -13,8 +13,7 @@ std::map<Object::Type, string> Object::m_names = {
         {OBJECT_FLOAT, "float"},
         {OBJECT_BOOL, "bool"},
         {OBJECT_STRING, "string"},
-
-
+        {OBJECT_NULL, "null"},
 };
 
 string Object::name() const {
@@ -53,4 +52,7 @@ std::shared_ptr<Object> Object::new_bool(bool value) {
 
 std::shared_ptr<Object> Object::new_string(std::string value) {
     return std::make_shared<String>(value);
+}
+std::shared_ptr<Object> Object::new_null() {
+    return std::make_shared<Null>();
 }

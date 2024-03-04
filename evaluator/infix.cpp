@@ -25,6 +25,10 @@ std::shared_ptr<Object> Evaluator::eval_infix(const std::shared_ptr<ast::Infix> 
             {
                 return eval_integer_infix_expression(op, left, right);
             }
+            else
+            {
+                return eval_diff_type_operator_expression(op, left, right);
+            }
         }
         case Object::OBJECT_INTEGER:
         {
@@ -40,6 +44,14 @@ std::shared_ptr<Object> Evaluator::eval_infix(const std::shared_ptr<ast::Infix> 
             {
                 return eval_integer_infix_expression(op, left, right);
             }
+            else if (right->type() == Object::OBJECT_STRING)
+            {
+                return eval_string_integer_infix_expression(op, right, left);
+            }
+            else
+            {
+                return eval_diff_type_operator_expression(op, left, right);
+            }
         }
         case Object::OBJECT_FLOAT:
         {
@@ -51,6 +63,10 @@ std::shared_ptr<Object> Evaluator::eval_infix(const std::shared_ptr<ast::Infix> 
             {
                 return eval_float_infix_expression(op, left, right);
             }
+            else
+            {
+                return eval_diff_type_operator_expression(op, left, right);
+            }
         }
         case Object::OBJECT_STRING:
         {
@@ -61,6 +77,21 @@ std::shared_ptr<Object> Evaluator::eval_infix(const std::shared_ptr<ast::Infix> 
             else if (right->type() == Object::OBJECT_INTEGER)
             {
                 return eval_string_integer_infix_expression(op, left, right);
+            }
+            else
+            {
+                return eval_diff_type_operator_expression(op, left, right);
+            }
+        }
+        case Object::OBJECT_NULL:
+        {
+            if (right->type() == Object::OBJECT_NULL)
+            {
+                return eval_null_infix_expression(op, left, right);
+            }
+            else
+            {
+                return eval_diff_type_operator_expression(op, left, right);
             }
         }
         default:
@@ -247,5 +278,35 @@ std::shared_ptr<Object> Evaluator::eval_string_integer_infix_expression(const st
         }
         return new_string(str);
     }
+    return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
+}
+
+std::shared_ptr<Object> Evaluator::eval_null_infix_expression(const std::string &op,
+                                                              const std::shared_ptr<Object> &left,
+                                                              const std::shared_ptr<Object> &right) {
+    if (op == "==")
+    {
+        return new_bool(true);
+    }
+    else if (op == "!=")
+    {
+        return new_bool(false);
+    }
+
+    return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
+}
+
+std::shared_ptr<Object> Evaluator::eval_diff_type_operator_expression(const std::string &op,
+                                                                      const std::shared_ptr<Object> &left,
+                                                                      const std::shared_ptr<Object> &right) {
+    if (op == "==")
+    {
+        return new_bool(false);
+    }
+    else if (op == "!=")
+    {
+        return new_bool(true);
+    }
+
     return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
 }

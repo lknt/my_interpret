@@ -6,3 +6,4 @@
 #include <object/integer.h>
 #include <object/error.h>
 #include <object/string.h>
+#include <object/null.h>
