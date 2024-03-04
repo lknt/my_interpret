@@ -11,6 +11,7 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_PREFIX, "Prefix"},
         {NODE_STRING, "String"},
         {NODE_NULL, "Null"},
+        {NODE_IDENTIFIER, "identifier"},
 
 };
 

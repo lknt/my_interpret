@@ -39,6 +39,8 @@ std::map<Token::Type, string> Token::m_name = {
         {Token::TOKEN_LPAREN, "("},
         {Token::TOKEN_RPAREN, ")"},
         {Token::TOKEN_SEMICOLON, ";"},
+
+        {Token::TOKEN_IDENTIFIER, "identifier"},
         {Token::TOKEN_TRUE, "true"},
         {Token::TOKEN_FALSE, "false"},
         {Token::TOKEN_NULL, "null"},

@@ -39,6 +39,7 @@ std::map<Token::Type, Parser::prefix_parser_fn> Parser::m_prefix_parser_fns = {
         {Token::TOKEN_NOT, &Parser::parse_prefix},
         {Token::TOKEN_STRING, &Parser::parse_string},
         {Token::TOKEN_NULL, &Parser::parse_null},
+        {Token::TOKEN_IDENTIFIER, &Parser::parse_identifier},
 };
 
 std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {
@@ -133,7 +134,7 @@ int Parser::peek_token_precedence()
 void Parser::no_prefix_parse_fn_error(Token::Type type)
 {
     std::ostringstream oss;
-    oss << "no prefix parse function for " << Token::m_name[type];
+    oss << "no prefix parse function for " << Token::m_name[type] << ", token:" << m_curr.literal();
     m_errors.push_back((oss.str()));
 }
 

@@ -107,6 +107,11 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node) 
             auto e = std::dynamic_pointer_cast<ast::Prefix>(node);
             return eval_prefix(e);
         }
+        case Node::NODE_IDENTIFIER:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Identifier>(node);
+            return eval_identifier(e);
+        }
         default:
         {
             return new_error("node type error");

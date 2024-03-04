@@ -9,3 +9,4 @@
 #include <ast/program.h>
 #include <ast/string.h>
 #include <ast/null.h>
+#include <ast/identifier.h>

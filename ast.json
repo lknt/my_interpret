@@ -1,1 +1,1 @@
-{"statements":[{"expresion":{"type":"String","value":"1ff\n"},"type":"Expression"},{"expresion":{"type":"String","value":"f	\f\y"},"type":"Expression"}],"type":"Program"}
+{"statements":[{"expresion":{"type":"identifier","value":"name"},"type":"Expression"},{"expresion":{"type":"identifier","value":"age"},"type":"Expression"}],"type":"Program"}

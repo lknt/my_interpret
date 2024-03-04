@@ -49,6 +49,7 @@ namespace pi
             std::shared_ptr<Object> eval_float(const std::shared_ptr<ast::Float> & node);
             std::shared_ptr<Object> eval_bool(const std::shared_ptr<ast::Bool> & node);
             std::shared_ptr<Object> eval_string(const std::shared_ptr<ast::String> & node);
+            std::shared_ptr<Object> eval_identifier(const std::shared_ptr<ast::Identifier> & node);
             std::shared_ptr<Object> eval_null();
 
             std::shared_ptr<Object> eval_infix(const std::shared_ptr<ast::Infix> &right);

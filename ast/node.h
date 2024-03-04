@@ -38,6 +38,7 @@ namespace pi
                 NODE_PREFIX,
                 NODE_STRING,
                 NODE_NULL,
+                NODE_IDENTIFIER,
             };
             Node() {}
             Node(Type type) : m_type(type){}
