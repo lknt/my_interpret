@@ -14,3 +14,5 @@
 #include <ast/compound.h>
 #include <ast/postfix.h>
 #include <ast/ternary.h>
+#include <ast/block.h>
+#include <ast/if.h>

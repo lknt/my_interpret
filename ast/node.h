@@ -43,6 +43,9 @@ namespace pi
                 NODE_COMPOUND,
                 NODE_POSTFIX,
                 NODE_TERNARY, //ternary
+                NODE_BLOCK,
+                NODE_IF,
+                NODE_SCENARIO,
             };
             Node() {}
             Node(Type type) : m_type(type){}

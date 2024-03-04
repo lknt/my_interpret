@@ -16,6 +16,9 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_COMPOUND, "Compound"},
         {NODE_POSTFIX, "Postfix"},
         {NODE_TERNARY, "Ternary"},
+        {NODE_BLOCK, "Block"},
+        {NODE_IF, "If"},
+        {NODE_SCENARIO, "Scenario"},
 
 };
 

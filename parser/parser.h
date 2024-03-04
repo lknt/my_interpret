@@ -106,6 +106,7 @@ namespace pi
             std::shared_ptr<Program> parse_program();
             std::shared_ptr<Statement> parse_statement();
             std::shared_ptr<Expression_Statement> parse_expression_statement();
+            std::shared_ptr<Block> parse_block();
 
 
 
@@ -118,7 +119,7 @@ namespace pi
             std::shared_ptr<Expression> parse_group();
             std::shared_ptr<Expression> parse_prefix();
             std::shared_ptr<Expression> parse_identifier();
-
+            std::shared_ptr<Expression> parse_if();
 
             //infix
             std::shared_ptr<Expression> parse_infix(const std::shared_ptr<Expression>&);

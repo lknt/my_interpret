@@ -60,7 +60,11 @@ std::map<Token::Type, string> Token::m_name = {
         {TOKEN_DECREASE,"--"},
 
         {TOKEN_QUESTION, "?"},
-        {TOKEN_COLON, ":"}
+        {TOKEN_COLON, ":"},
+        {TOKEN_IF, "if"},
+        {TOKEN_ELSE, "else"},
+        {TOKEN_LBRACE, "{"},
+        {TOKEN_RBRACE, "}"},
 
 };
 
@@ -68,6 +72,8 @@ std::map<string, Token::Type> Token::m_keywords = {
         {"true", TOKEN_TRUE},
         {"false", TOKEN_FALSE},
         {"null", TOKEN_NULL},
+        {"if", TOKEN_IF},
+        {"else", TOKEN_ELSE},
 };
 
 Token::Token() : m_type(TOKEN_ILLEGAL){

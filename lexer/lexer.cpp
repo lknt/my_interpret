@@ -469,6 +469,18 @@ Token Lexer::next_token() {
             literal += m_ch;
             return new_token(Token::TOKEN_RPAREN, literal);
         }
+        case '{':
+        {
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_LBRACE, literal);
+        }
+        case '}':
+        {
+            string literal = "";
+            literal += m_ch;
+            return new_token(Token::TOKEN_RBRACE, literal);
+        }
         case '\'':
         {
             string literal;

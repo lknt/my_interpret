@@ -89,6 +89,11 @@ namespace pi
 
                 TOKEN_QUESTION,
                 TOKEN_COLON,
+                TOKEN_IF,
+                TOKEN_ELSE,
+                TOKEN_LBRACE,
+                TOKEN_RBRACE,
+
             };
 
             Token();

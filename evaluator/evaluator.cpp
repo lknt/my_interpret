@@ -161,6 +161,16 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node, 
             auto e = std::dynamic_pointer_cast<ast::Ternary>(node);
             return eval_ternary(e, env);
         }
+        case Node::NODE_BLOCK:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Block>(node);
+            return eval_block(e, env);
+        }
+        case Node::NODE_IF:
+        {
+            auto e = std::dynamic_pointer_cast<ast::If>(node);
+            return eval_if(e, env);
+        }
         default:
         {
             return new_error("node type error");

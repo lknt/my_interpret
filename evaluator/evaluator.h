@@ -56,6 +56,8 @@ namespace pi
             std::shared_ptr<Object> eval_assign(const std::shared_ptr<ast::Assign> & node, Environment * env);
             std::shared_ptr<Object> eval_compound(const std::shared_ptr<ast::Compound> & node, Environment * env);
             std::shared_ptr<Object> eval_ternary(const std::shared_ptr<ast::Ternary> & node, Environment * env);
+            std::shared_ptr<Object> eval_block(const std::shared_ptr<ast::Block> & node, Environment * env);
+            std::shared_ptr<Object> eval_if(const std::shared_ptr<ast::If> & node, Environment * env);
 
 
             std::shared_ptr<Object> eval_null();
