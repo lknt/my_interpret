@@ -53,9 +53,11 @@ namespace pi
             std::shared_ptr<Object> eval_string(const std::shared_ptr<ast::String> & node);
             std::shared_ptr<Object> eval_identifier(const std::shared_ptr<ast::Identifier> & node, Environment * env);
             std::shared_ptr<Object> eval_assign(const std::shared_ptr<ast::Assign> & node, Environment * env);
+            std::shared_ptr<Object> eval_compound(const std::shared_ptr<ast::Compound> & node, Environment * env);
+
             std::shared_ptr<Object> eval_null();
 
-            std::shared_ptr<Object> eval_infix(const std::shared_ptr<ast::Infix> &right, Environment * env);
+            std::shared_ptr<Object> eval_infix(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right, Environment * env);
             std::shared_ptr<Object> eval_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_float_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_bool_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);

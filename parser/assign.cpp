@@ -20,7 +20,7 @@ std::shared_ptr<Expression> Parser::parse_assign(const std::shared_ptr<Expressio
         }
         default:
         {
-
+            break;
         }
     }
 }

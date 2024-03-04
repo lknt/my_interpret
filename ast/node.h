@@ -40,6 +40,7 @@ namespace pi
                 NODE_NULL,
                 NODE_IDENTIFIER,
                 NODE_ASSIGN,
+                NODE_COMPOUND,
             };
             Node() {}
             Node(Type type) : m_type(type){}

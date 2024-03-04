@@ -2,19 +2,9 @@
 
 using namespace pi::evaluator;
 
-std::shared_ptr<Object> Evaluator::eval_infix(const std::shared_ptr<ast::Infix> &e,
-                                              pi::evaluator::Environment *env) {
-    auto left = eval(e->m_left, env);
-    if (is_error(left))
-    {
-        return left;
-    }
-    auto right = eval(e->m_right, env);
-    if (is_error(right))
-    {
-        return right;
-    }
-    auto op = e->m_operator;
+std::shared_ptr<Object> Evaluator::eval_infix(const std::string &op, const std::shared_ptr<Object> &left,
+                                              const std::shared_ptr<Object> &right, Environment * env)  {
+
     switch (left->type()) {
         case Object::OBJECT_BOOL:
         {

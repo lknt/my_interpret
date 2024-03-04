@@ -12,7 +12,8 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_STRING, "String"},
         {NODE_NULL, "Null"},
         {NODE_IDENTIFIER, "identifier"},
-        {NODE_ASSIGN, "assign"},
+        {NODE_ASSIGN, "Assign"},
+        {NODE_COMPOUND, "Compound"},
 
 };
 

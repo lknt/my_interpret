@@ -188,33 +188,84 @@ Token Lexer::next_token() {
     {
         case '+':
         {
-            string literal = "";
-            literal += m_ch;
-            return new_token(Token::TOKEN_PLUS, literal);
+            if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_PLUS_ASSIGN, literal);
+            }
+            else
+            {
+                string literal;
+                literal += m_ch;
+                return new_token(Token::TOKEN_PLUS, literal);
+            }
         }
         case '-':
         {
-            string literal = "";
-            literal += m_ch;
-            return new_token(Token::TOKEN_MINUS, literal);
+            if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_MINUS_ASSIGN, literal);
+            }
+            else {
+                string literal;
+                literal += m_ch;
+                return new_token(Token::TOKEN_MINUS, literal);
+            }
         }
         case '*':
         {
-            string literal = "";
-            literal += m_ch;
-            return new_token(Token::TOKEN_ASTERISK, literal);
+            if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_ASTERISK_ASSIGN, literal);
+            }
+            else {
+                string literal = "";
+                literal += m_ch;
+                return new_token(Token::TOKEN_ASTERISK, literal);
+            }
         }
         case '/':
         {
-            string literal = "";
-            literal += m_ch;
-            return new_token(Token::TOKEN_SLASH, literal);
+            if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_SLASH_ASSIGN, literal);
+            }
+            else {
+                string literal = "";
+                literal += m_ch;
+                return new_token(Token::TOKEN_SLASH, literal);
+            }
         }
         case '%':
         {
-            string literal = "";
-            literal += m_ch;
-            return new_token(Token::TOKEN_MODULO, literal);
+            if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_MODULO_ASSIGN, literal);
+            }
+            else {
+                string literal = "";
+                literal += m_ch;
+                return new_token(Token::TOKEN_MODULO, literal);
+            }
         }
         case '~':
         {
@@ -231,6 +282,14 @@ Token Lexer::next_token() {
                 read_char();
                 literal += m_ch;
                 return new_token(Token::TOKEN_AND, literal);
+            }
+            else if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_AND_ASSIGN, literal);
             }
             else {
                 string literal;
@@ -249,6 +308,14 @@ Token Lexer::next_token() {
                 literal += m_ch;
                 return new_token(Token::TOKEN_OR, literal);
             }
+            else if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_OR_ASSIGN, literal);
+            }
             else {
                 string literal;
                 literal += m_ch;
@@ -257,9 +324,20 @@ Token Lexer::next_token() {
         }
         case '^':
         {
-            string literal = "";
-            literal += m_ch;
-            return new_token(Token::TOKEN_BIT_XOR, literal);
+            if (peek_char() == '=')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_XOR_ASSIGN, literal);
+            }
+            else
+            {
+                string literal = "";
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_XOR, literal);
+            }
         }
         case '<':
         {
@@ -269,7 +347,16 @@ Token Lexer::next_token() {
                 literal += m_ch;
                 read_char();
                 literal += m_ch;
-                return new_token(Token::TOKEN_BIT_LSHIFT, literal);
+                if (peek_char() == '=')
+                {
+                    read_char();
+                    literal += m_ch;
+                    return new_token(Token::TOKEN_BIT_LSHIFT_ASSIGN, literal);
+                }
+                else
+                {
+                    return new_token(Token::TOKEN_BIT_LSHIFT, literal);
+                }
             }
             else if (peek_char() == '=')
             {
@@ -294,7 +381,15 @@ Token Lexer::next_token() {
                 literal += m_ch;
                 read_char();
                 literal += m_ch;
-                return new_token(Token::TOKEN_BIT_RSHIFT, literal);
+                if (peek_char() == '=')
+                {
+                    read_char();
+                    literal += m_ch;
+                    return new_token(Token::TOKEN_BIT_RSHIFT_ASSIGN, literal);
+                }
+                else {
+                    return new_token(Token::TOKEN_BIT_RSHIFT, literal);
+                }
             }
             else if (peek_char() == '=')
             {

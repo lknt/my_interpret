@@ -96,8 +96,20 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node, 
             /*
              * 解析左右，然后把符号，左右的value（object）传入eval_infix里面*/
             auto e = std::dynamic_pointer_cast<ast::Infix>(node);
+            auto left = eval(e->m_left, env);
+            if (is_error(left))
+            {
+                return left;
+            }
+            auto right = eval(e->m_right, env);
+            if (is_error(right))
+            {
+                return right;
+            }
+            auto op = e->m_operator;
 
-            return eval_infix(e, env);
+
+            return eval_infix(op, left, right, env);
 
         }
         case Node::NODE_PREFIX:
@@ -116,6 +128,11 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node, 
         {
             auto e = std::dynamic_pointer_cast<ast::Assign>(node);
             return eval_assign(e, env);
+        }
+        case Node::NODE_COMPOUND:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Compound>(node);
+            return eval_compound(e, env);
         }
         default:
         {

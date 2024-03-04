@@ -11,3 +11,4 @@
 #include <ast/null.h>
 #include <ast/identifier.h>
 #include <ast/assign.h>
+#include <ast/compound.h>

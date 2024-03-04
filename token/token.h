@@ -72,6 +72,17 @@ namespace pi
 
                 TOKEN_NULL,
                 TOKEN_ASSIGN,
+
+                TOKEN_PLUS_ASSIGN,
+                TOKEN_MINUS_ASSIGN,
+                TOKEN_ASTERISK_ASSIGN,
+                TOKEN_SLASH_ASSIGN,
+                TOKEN_MODULO_ASSIGN,
+                TOKEN_BIT_OR_ASSIGN,
+                TOKEN_BIT_AND_ASSIGN,
+                TOKEN_BIT_XOR_ASSIGN,
+                TOKEN_BIT_LSHIFT_ASSIGN,
+                TOKEN_BIT_RSHIFT_ASSIGN,
             };
 
             Token();

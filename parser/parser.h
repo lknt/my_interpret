@@ -70,7 +70,7 @@ namespace pi
             enum Precedence
             {
                 LOWEST = 0,
-                ASSIGN,  //=
+                ASSIGN,  //=   += -= /=
                 LOGIC,  //& | ^ << >>  && ||
                 COMPARE,  // <=  >=  ==
                 SUM,   // + -
@@ -121,6 +121,7 @@ namespace pi
             //infix
             std::shared_ptr<Expression> parse_infix(const std::shared_ptr<Expression>&);
             std::shared_ptr<Expression> parse_assign(const std::shared_ptr<Expression>&);
+            std::shared_ptr<Expression> parse_compound(const std::shared_ptr<Expression>&);
 
         private:
 

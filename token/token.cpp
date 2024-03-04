@@ -44,7 +44,18 @@ std::map<Token::Type, string> Token::m_name = {
         {Token::TOKEN_TRUE, "true"},
         {Token::TOKEN_FALSE, "false"},
         {Token::TOKEN_NULL, "null"},
-        {Token::TOKEN_ASSIGN, "assign"},
+        {Token::TOKEN_ASSIGN, "="},
+
+        {Token::TOKEN_PLUS_ASSIGN, "+="},
+        {Token::TOKEN_MINUS_ASSIGN, "-="},
+        {Token::TOKEN_ASTERISK_ASSIGN,"*="},
+        {Token::TOKEN_SLASH_ASSIGN,"/="},
+        {Token::TOKEN_MODULO_ASSIGN,"%="},
+        {Token::TOKEN_BIT_OR_ASSIGN,"|="},
+        {Token::TOKEN_BIT_AND_ASSIGN,"&="},
+        {Token::TOKEN_BIT_XOR_ASSIGN,"^="},
+        {Token::TOKEN_BIT_LSHIFT_ASSIGN,"<<="},
+        {Token::TOKEN_BIT_RSHIFT_ASSIGN,">>="},
 };
 
 std::map<string, Token::Type> Token::m_keywords = {

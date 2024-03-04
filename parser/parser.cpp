@@ -7,6 +7,17 @@ using namespace pi::parser;
 
 std::map<Token::Type, int> Parser::m_precedences = {
         {Token::TOKEN_ASSIGN, ASSIGN},
+        {Token::TOKEN_BIT_RSHIFT_ASSIGN, ASSIGN},
+        {Token::TOKEN_BIT_LSHIFT_ASSIGN, ASSIGN},
+        {Token::TOKEN_BIT_AND_ASSIGN, ASSIGN},
+        {Token::TOKEN_BIT_OR_ASSIGN, ASSIGN},
+        {Token::TOKEN_BIT_XOR_ASSIGN, ASSIGN},
+        {Token::TOKEN_PLUS_ASSIGN, ASSIGN},
+        {Token::TOKEN_MINUS_ASSIGN, ASSIGN},
+        {Token::TOKEN_SLASH_ASSIGN, ASSIGN},
+        {Token::TOKEN_ASTERISK_ASSIGN, ASSIGN},
+        {Token::TOKEN_MODULO_ASSIGN, ASSIGN},
+
         {Token::TOKEN_BIT_AND, LOGIC},
         {Token::TOKEN_BIT_OR, LOGIC},
         {Token::TOKEN_BIT_XOR, LOGIC},
@@ -63,6 +74,17 @@ std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {
         {Token::TOKEN_AND, &Parser::parse_infix},
         {Token::TOKEN_OR, &Parser::parse_infix},
         {Token::TOKEN_ASSIGN, &Parser::parse_assign},
+
+        {Token::TOKEN_BIT_RSHIFT_ASSIGN, &Parser::parse_compound},
+        {Token::TOKEN_BIT_LSHIFT_ASSIGN, &Parser::parse_compound},
+        {Token::TOKEN_BIT_AND_ASSIGN, &Parser::parse_compound},
+        {Token::TOKEN_BIT_OR_ASSIGN, &Parser::parse_compound},
+        {Token::TOKEN_BIT_XOR_ASSIGN, &Parser::parse_compound},
+        {Token::TOKEN_PLUS_ASSIGN, &Parser::parse_compound},
+        {Token::TOKEN_MINUS_ASSIGN, &Parser::parse_compound},
+        {Token::TOKEN_SLASH_ASSIGN, &Parser::parse_compound},
+        {Token::TOKEN_ASTERISK_ASSIGN, &Parser::parse_compound},
+        {Token::TOKEN_MODULO_ASSIGN, &Parser::parse_compound},
 
 };
 
