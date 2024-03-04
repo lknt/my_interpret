@@ -83,6 +83,7 @@ namespace pi
 
             typedef std::shared_ptr<Expression> (Parser::*prefix_parser_fn)(void);
             typedef std::shared_ptr<Expression> (Parser::*infix_parser_fn)(const std::shared_ptr<Expression>&);
+            typedef std::shared_ptr<Expression> (Parser::*postfix_parser_fn)(const std::shared_ptr<Expression>&);
 
             void next_token();
 
@@ -123,6 +124,8 @@ namespace pi
             std::shared_ptr<Expression> parse_assign(const std::shared_ptr<Expression>&);
             std::shared_ptr<Expression> parse_compound(const std::shared_ptr<Expression>&);
 
+            //postfix
+            std::shared_ptr<Expression> parse_postfix(const std::shared_ptr<Expression>&);
         private:
 
             std::shared_ptr<Lexer> m_lexer;
@@ -133,6 +136,7 @@ namespace pi
             static std::map<Token::Type, int> m_precedences;
             static std::map<Token::Type, prefix_parser_fn> m_prefix_parser_fns;
             static std::map<Token::Type, infix_parser_fn> m_infix_parser_fns;
+            static std::map<Token::Type, postfix_parser_fn> m_postfix_parser_fns;
 
 
 

@@ -196,6 +196,14 @@ Token Lexer::next_token() {
                 literal += m_ch;
                 return new_token(Token::TOKEN_PLUS_ASSIGN, literal);
             }
+            else if (peek_char() == '+')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_INCREASE, literal);
+            }
             else
             {
                 string literal;
@@ -212,6 +220,14 @@ Token Lexer::next_token() {
                 read_char();
                 literal += m_ch;
                 return new_token(Token::TOKEN_MINUS_ASSIGN, literal);
+            }
+            else if (peek_char() == '-')
+            {
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_DECREASE, literal);
             }
             else {
                 string literal;

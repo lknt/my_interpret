@@ -33,6 +33,13 @@ std::shared_ptr<Expression> Parser::parse_expression(int precedence) {
         /*需要传入中缀表达式的左部*/
         e = (this->*(infix->second))(e);
     }
+    auto postfix = m_postfix_parser_fns.find(m_peek.type());
+    if (postfix == m_postfix_parser_fns.end())
+    {
+        return e;
+    }
+    next_token();
+    e = (this->*(postfix->second))(e);
     return e;
 }
 //(1+2)*3

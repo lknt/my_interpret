@@ -88,6 +88,12 @@ std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {
 
 };
 
+std::map<Token::Type, Parser::postfix_parser_fn> Parser::m_postfix_parser_fns ={
+        {Token::TOKEN_INCREASE, &Parser::parse_postfix},
+        {Token::TOKEN_DECREASE, &Parser::parse_postfix},
+
+};
+
 Parser::Parser() {}
 
 

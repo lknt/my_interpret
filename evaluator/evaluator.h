@@ -71,6 +71,7 @@ namespace pi
             std::shared_ptr<Object> eval_tilde_prefix_operator_expression(std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_bang_prefix_operator_expression(std::shared_ptr<Object> & right);
 
+            std::shared_ptr<Object> eval_postfix(const std::shared_ptr<ast::Postfix> &node, Environment * env);
 
         };
     }

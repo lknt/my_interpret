@@ -83,6 +83,9 @@ namespace pi
                 TOKEN_BIT_XOR_ASSIGN,
                 TOKEN_BIT_LSHIFT_ASSIGN,
                 TOKEN_BIT_RSHIFT_ASSIGN,
+
+                TOKEN_INCREASE,
+                TOKEN_DECREASE,
             };
 
             Token();
