@@ -13,7 +13,7 @@ namespace pi
            ~Null() {}
             virtual string str()
             {
-                return std::to_string(0);
+                return "null";
             }
 
         };

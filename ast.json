@@ -1,1 +1,1 @@
-{"statements":[{"expresion":{"type":"identifier","value":"name"},"type":"Expression"},{"expresion":{"type":"identifier","value":"age"},"type":"Expression"}],"type":"Program"}
+{"statements":[{"expresion":{"name":{"type":"identifier","value":"name"},"type":"assign","value":{"type":"Integer","value":"5"}},"type":"Expression"},{"expresion":{"name":{"type":"identifier","value":"age"},"type":"assign","value":{"type":"Integer","value":"6"}},"type":"Expression"}],"type":"Program"}

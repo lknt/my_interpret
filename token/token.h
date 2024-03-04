@@ -71,6 +71,7 @@ namespace pi
                 TOKEN_STRING,
 
                 TOKEN_NULL,
+                TOKEN_ASSIGN,
             };
 
             Token();

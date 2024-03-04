@@ -2,9 +2,10 @@
 
 using namespace pi::evaluator;
 
-std::shared_ptr<Object> Evaluator::eval_prefix(const std::shared_ptr<ast::Prefix> &node) {
+std::shared_ptr<Object> Evaluator::eval_prefix(const std::shared_ptr<ast::Prefix> &node,
+                                               pi::evaluator::Environment *env) {
     string op = node->m_operator;
-    auto right = eval(node->m_right);
+    auto right = eval(node->m_right, env);
     if (is_error(right))
     {
         return right;

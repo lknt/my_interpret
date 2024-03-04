@@ -327,9 +327,7 @@ Token Lexer::next_token() {
             {
                 string literal;
                 literal += m_ch;
-                read_char();
-                literal += m_ch;
-                return new_token(Token::TOKEN_ILLEGAL, literal);
+                return new_token(Token::TOKEN_ASSIGN, literal);
             }
         }
 

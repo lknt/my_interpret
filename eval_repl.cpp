@@ -17,6 +17,7 @@ int main()
 {
     std::cout << "Welcome to pi programming language!" << std::endl;
 
+    std::shared_ptr<Environment> env(new Environment());
 
     std::shared_ptr<Evaluator> evaluator(new Evaluator());
 
@@ -40,10 +41,11 @@ int main()
         }
 
 
-        auto evaluated = evaluator->eval(program);
+        auto evaluated = evaluator->eval(program, env.get());
         if (evaluated)
         {
-            std::cout << "eval: " << evaluated->str() << std::endl;
+            if (evaluated->type() != Object::OBJECT_NULL)
+                std::cout << "eval: " << evaluated->str() << std::endl;
         }
     }
 

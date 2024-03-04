@@ -10,3 +10,4 @@
 #include <ast/string.h>
 #include <ast/null.h>
 #include <ast/identifier.h>
+#include <ast/assign.h>

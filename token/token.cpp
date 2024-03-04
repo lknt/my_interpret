@@ -44,6 +44,7 @@ std::map<Token::Type, string> Token::m_name = {
         {Token::TOKEN_TRUE, "true"},
         {Token::TOKEN_FALSE, "false"},
         {Token::TOKEN_NULL, "null"},
+        {Token::TOKEN_ASSIGN, "assign"},
 };
 
 std::map<string, Token::Type> Token::m_keywords = {

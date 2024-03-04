@@ -52,19 +52,19 @@ std::shared_ptr<Object> Evaluator::cast_from_integer_to_float(const std::shared_
 }
 
 
-std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node) {
+std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node, pi::evaluator::Environment *env) {
     switch (node->type()) {
         case Node::NODE_PROGRAM:
         {
             //对程序根节点求值
             //dynamic_cast面向裸指针，dynamic_pointer_cast面向智能指针
             auto s = std::dynamic_pointer_cast<ast::Program>(node);
-            return eval_program(s->m_statement);
+            return eval_program(s->m_statement, env);
         }
         case Node::NODE_EXPRESSION_STATEMENT:
         {
             auto s = std::dynamic_pointer_cast<ast::Expression_Statement>(node);
-            return eval(s->m_expression);
+            return eval(s->m_expression, env);
         }
         case Node::NODE_INTEGER:
         {
@@ -97,7 +97,7 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node) 
              * 解析左右，然后把符号，左右的value（object）传入eval_infix里面*/
             auto e = std::dynamic_pointer_cast<ast::Infix>(node);
 
-            return eval_infix(e);
+            return eval_infix(e, env);
 
         }
         case Node::NODE_PREFIX:
@@ -105,12 +105,17 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node) 
             /*
              * Expression->prefix*/
             auto e = std::dynamic_pointer_cast<ast::Prefix>(node);
-            return eval_prefix(e);
+            return eval_prefix(e, env);
         }
         case Node::NODE_IDENTIFIER:
         {
             auto e = std::dynamic_pointer_cast<ast::Identifier>(node);
-            return eval_identifier(e);
+            return eval_identifier(e, env);
+        }
+        case Node::NODE_ASSIGN:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Assign>(node);
+            return eval_assign(e, env);
         }
         default:
         {

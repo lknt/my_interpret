@@ -8,6 +8,8 @@ using namespace pi::ast;
 #include <object/header.h>
 using namespace pi::object;
 
+#include <evaluator/environment.h>
+
 
 namespace pi
 {
@@ -43,16 +45,17 @@ namespace pi
              * eval_integer只是解析一个integer节点
              * eval_infix解析中缀表达式
              * */
-            std::shared_ptr<Object> eval(const std::shared_ptr<ast::Node> &node);
-            std::shared_ptr<Object> eval_program(const std::list<std::shared_ptr<ast::Statement>>& stmt);
+            std::shared_ptr<Object> eval(const std::shared_ptr<ast::Node> &node, Environment * env);
+            std::shared_ptr<Object> eval_program(const std::list<std::shared_ptr<ast::Statement>>& stmt, Environment * env);
             std::shared_ptr<Object> eval_integer(const std::shared_ptr<ast::Integer> & node);
             std::shared_ptr<Object> eval_float(const std::shared_ptr<ast::Float> & node);
             std::shared_ptr<Object> eval_bool(const std::shared_ptr<ast::Bool> & node);
             std::shared_ptr<Object> eval_string(const std::shared_ptr<ast::String> & node);
-            std::shared_ptr<Object> eval_identifier(const std::shared_ptr<ast::Identifier> & node);
+            std::shared_ptr<Object> eval_identifier(const std::shared_ptr<ast::Identifier> & node, Environment * env);
+            std::shared_ptr<Object> eval_assign(const std::shared_ptr<ast::Assign> & node, Environment * env);
             std::shared_ptr<Object> eval_null();
 
-            std::shared_ptr<Object> eval_infix(const std::shared_ptr<ast::Infix> &right);
+            std::shared_ptr<Object> eval_infix(const std::shared_ptr<ast::Infix> &right, Environment * env);
             std::shared_ptr<Object> eval_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_float_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_bool_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
@@ -61,7 +64,7 @@ namespace pi
             std::shared_ptr<Object> eval_null_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_diff_type_operator_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
 
-            std::shared_ptr<Object> eval_prefix(const std::shared_ptr<ast::Prefix> &node);
+            std::shared_ptr<Object> eval_prefix(const std::shared_ptr<ast::Prefix> &node, Environment * env);
             std::shared_ptr<Object> eval_minus_prefix_operator_expression(std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_tilde_prefix_operator_expression(std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_bang_prefix_operator_expression(std::shared_ptr<Object> & right);
