@@ -70,6 +70,8 @@ std::map<Token::Type, string> Token::m_name = {
         {TOKEN_BREAK, "break"},
         {TOKEN_WHILE, "while"},
 
+        {TOKEN_FOR, "for"},
+
 };
 
 std::map<string, Token::Type> Token::m_keywords = {
@@ -81,6 +83,7 @@ std::map<string, Token::Type> Token::m_keywords = {
         {"while", TOKEN_WHILE},
         {"continue", TOKEN_CONTINUE},
         {"break", TOKEN_BREAK},
+        {"for", TOKEN_FOR},
 };
 
 Token::Token() : m_type(TOKEN_ILLEGAL){

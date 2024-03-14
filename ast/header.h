@@ -18,3 +18,4 @@
 #include <ast/while.h>
 #include <ast/break.h>
 #include <ast/continue.h>
+#include <ast/for.h>

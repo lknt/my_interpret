@@ -98,6 +98,8 @@ namespace pi
                 TOKEN_CONTINUE,
                 TOKEN_WHILE,
 
+                TOKEN_FOR,
+
 
             };
 

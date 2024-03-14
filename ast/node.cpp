@@ -24,6 +24,8 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_BREAK, "Break"},
         {NODE_CONTINUE, "Continue"},
 
+        {NODE_FOR, "For"}
+
 };
 
 string Node::name() const

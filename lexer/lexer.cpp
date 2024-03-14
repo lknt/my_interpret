@@ -507,6 +507,12 @@ Token Lexer::next_token() {
             return new_token(Token::TOKEN_COLON, literal);
 
         }
+        case ';':
+        {
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_SEMICOLON, literal);
+        }
         case 0:
         {
             return new_token(Token::TOKEN_EOF, "");

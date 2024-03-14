@@ -63,6 +63,7 @@ namespace pi
             std::shared_ptr<Object> eval_break(const std::shared_ptr<ast::Break> & node);
             std::shared_ptr<Object> eval_continue(const std::shared_ptr<ast::Continue> & node);
             std::shared_ptr<Object> eval_while(const std::shared_ptr<ast::While> & node, Environment * env);
+            std::shared_ptr<Object> eval_for(const std::shared_ptr<ast::For> & node, Environment * env);
 
 
 
