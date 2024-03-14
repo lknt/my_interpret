@@ -20,7 +20,7 @@ int main()
     {
         for (auto &error : errors)
         {
-            std::cout << error << std::endl;
+            std::cout << "parser: " << error << std::endl;
         }
         return -1;
     }

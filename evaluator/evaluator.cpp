@@ -60,6 +60,14 @@ std::shared_ptr<Object> Evaluator::new_null() {
     return Object::new_null();
 }
 
+std::shared_ptr<Object> Evaluator::new_break() {
+    return Object::new_break();
+}
+
+std::shared_ptr<Object> Evaluator::new_continue() {
+    return Object::new_continue();
+}
+
 std::shared_ptr<Object> Evaluator::cast_from_integer_to_float(const std::shared_ptr<Object> & obj)
 {
     auto i = std::dynamic_pointer_cast<object::Integer>(obj);
@@ -171,6 +179,22 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node, 
             auto e = std::dynamic_pointer_cast<ast::If>(node);
             return eval_if(e, env);
         }
+        case Node::NODE_BREAK:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Break>(node);
+            return eval_break(e);
+        }
+        case Node::NODE_CONTINUE:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Continue>(node);
+            return eval_continue(e);
+        }
+        case Node::NODE_WHILE:
+        {
+            auto e = std::dynamic_pointer_cast<ast::While>(node);
+            return eval_while(e, env);
+        }
+
         default:
         {
             return new_error("node type error");

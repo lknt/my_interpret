@@ -33,6 +33,8 @@ namespace pi
             std::shared_ptr<Object> new_bool(bool value);
             std::shared_ptr<Object> new_string(string value);
             std::shared_ptr<Object> new_null();
+            std::shared_ptr<Object> new_break();
+            std::shared_ptr<Object> new_continue();
             std::shared_ptr<Object> cast_from_integer_to_float(const std::shared_ptr<Object> & obj);
 
             /*
@@ -58,6 +60,10 @@ namespace pi
             std::shared_ptr<Object> eval_ternary(const std::shared_ptr<ast::Ternary> & node, Environment * env);
             std::shared_ptr<Object> eval_block(const std::shared_ptr<ast::Block> & node, Environment * env);
             std::shared_ptr<Object> eval_if(const std::shared_ptr<ast::If> & node, Environment * env);
+            std::shared_ptr<Object> eval_break(const std::shared_ptr<ast::Break> & node);
+            std::shared_ptr<Object> eval_continue(const std::shared_ptr<ast::Continue> & node);
+            std::shared_ptr<Object> eval_while(const std::shared_ptr<ast::While> & node, Environment * env);
+
 
 
             std::shared_ptr<Object> eval_null();

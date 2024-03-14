@@ -8,7 +8,14 @@ using namespace pi::parser;
  * */
 std::shared_ptr<Statement> Parser::parse_statement()
 {
-    return parse_expression_statement();
+    switch (m_curr.type()) {
+        case Token::TOKEN_BREAK:
+            return parse_break();
+        case Token::TOKEN_CONTINUE:
+            return parse_continue();
+        default:
+            return parse_expression_statement();
+    }
 }
 
 /* 返回一个表达式语句，（就是包含了一个表达式指针的类

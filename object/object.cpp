@@ -14,6 +14,8 @@ std::map<Object::Type, string> Object::m_names = {
         {OBJECT_BOOL, "bool"},
         {OBJECT_STRING, "string"},
         {OBJECT_NULL, "null"},
+        {OBJECT_BREAK, "break"},
+        {OBJECT_CONTINUE, "continue"},
 };
 
 string Object::name() const {
@@ -55,4 +57,12 @@ std::shared_ptr<Object> Object::new_string(std::string value) {
 }
 std::shared_ptr<Object> Object::new_null() {
     return std::make_shared<Null>();
+}
+
+std::shared_ptr<Object> Object::new_break() {
+    return std::make_shared<Break>();
+}
+
+std::shared_ptr<Object> Object::new_continue() {
+    return std::make_shared<Continue>();
 }

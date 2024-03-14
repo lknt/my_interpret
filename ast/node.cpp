@@ -20,6 +20,10 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_IF, "If"},
         {NODE_SCENARIO, "Scenario"},
 
+        {NODE_WHILE, "While"},
+        {NODE_BREAK, "Break"},
+        {NODE_CONTINUE, "Continue"},
+
 };
 
 string Node::name() const

@@ -16,8 +16,12 @@ std::shared_ptr<Object> Evaluator::eval_if(const std::shared_ptr<ast::If> &node,
             {
                 return obj;
             }
-            //todo: 处理return, break,continue
+            if (obj->type() == Object::OBJECT_BREAK || obj->type() == Object::OBJECT_CONTINUE)
+            {
+                return obj;
+            }
             break;
+            //todo: 处理return, break,continue
         }
     }
     return new_null();

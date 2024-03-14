@@ -1,15 +1,11 @@
-a=4
-b=3
-c=0
-if a < b {
-    c=100
+i = 0
+s=0
+while i<5 {
+    i++
+    if i % 2 == 0 {
+        continue
+    }
+
+    s++
 }
-else if a>b {
-    c=200
-}
-else
-{
-    c=300
-}
-c
-a
+s

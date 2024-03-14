@@ -46,6 +46,10 @@ namespace pi
                 NODE_BLOCK,
                 NODE_IF,
                 NODE_SCENARIO,
+
+                NODE_BREAK,
+                NODE_CONTINUE,
+                NODE_WHILE,
             };
             Node() {}
             Node(Type type) : m_type(type){}

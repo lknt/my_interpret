@@ -39,6 +39,8 @@ namespace pi
                 OBJECT_BOOL,
                 OBJECT_STRING,
                 OBJECT_NULL,
+                OBJECT_BREAK,
+                OBJECT_CONTINUE,
             };
             Object(){}
             Object(Type type) : m_type(type) {}
@@ -54,6 +56,8 @@ namespace pi
             static std::shared_ptr<Object> new_bool(bool value);
             static std::shared_ptr<Object> new_string(string value);
             static std::shared_ptr<Object> new_null();
+            static std::shared_ptr<Object> new_break();
+            static std::shared_ptr<Object> new_continue();
 
         protected:
             Type m_type;

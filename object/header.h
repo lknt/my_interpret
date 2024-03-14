@@ -7,3 +7,5 @@
 #include <object/error.h>
 #include <object/string.h>
 #include <object/null.h>
+#include <object/break.h>
+#include <object/continue.h>

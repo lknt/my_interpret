@@ -94,6 +94,11 @@ namespace pi
                 TOKEN_LBRACE,
                 TOKEN_RBRACE,
 
+                TOKEN_BREAK,
+                TOKEN_CONTINUE,
+                TOKEN_WHILE,
+
+
             };
 
             Token();
