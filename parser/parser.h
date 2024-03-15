@@ -122,6 +122,7 @@ namespace pi
             std::shared_ptr<Expression> parse_if();
             std::shared_ptr<Expression> parse_while();
             std::shared_ptr<Expression> parse_for();
+            std::shared_ptr<Expression> parse_switch();
 
 
             //infix

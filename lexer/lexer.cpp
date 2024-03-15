@@ -513,6 +513,12 @@ Token Lexer::next_token() {
             literal += m_ch;
             return new_token(Token::TOKEN_SEMICOLON, literal);
         }
+        case ',':
+        {
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_COMMA, literal);
+        }
         case 0:
         {
             return new_token(Token::TOKEN_EOF, "");

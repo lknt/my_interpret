@@ -1,5 +1,16 @@
-sum = 0
-for i = 0; i < 10; i += 2{
-    sum ++
+a = 1
+name = null
+switch a {
+    case 1:
+        name = 'jack'
+        break
+    case 2:
+        name = 'lucy'
+        break
+    case 3, 4:
+        name = 'lily'
+        break
+    default:
+        name = 'sean'
+        break
 }
-sum

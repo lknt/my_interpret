@@ -51,6 +51,10 @@ namespace pi
                 NODE_CONTINUE,
                 NODE_WHILE,
                 NODE_FOR,
+
+                NODE_SWITCH,
+                NODE_CASE,
+
             };
             Node() {}
             Node(Type type) : m_type(type){}

@@ -100,6 +100,12 @@ namespace pi
 
                 TOKEN_FOR,
 
+                TOKEN_SWITCH,
+                TOKEN_CASE,
+                TOKEN_DEFAULT,
+
+                TOKEN_COMMA,
+
 
             };
 

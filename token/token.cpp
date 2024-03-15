@@ -72,6 +72,11 @@ std::map<Token::Type, string> Token::m_name = {
 
         {TOKEN_FOR, "for"},
 
+        {TOKEN_SWITCH, "switch"},
+        {TOKEN_CASE, "case"},
+        {TOKEN_DEFAULT, "default"},
+        {TOKEN_COMMA, ","}
+
 };
 
 std::map<string, Token::Type> Token::m_keywords = {
@@ -84,6 +89,10 @@ std::map<string, Token::Type> Token::m_keywords = {
         {"continue", TOKEN_CONTINUE},
         {"break", TOKEN_BREAK},
         {"for", TOKEN_FOR},
+        {"switch", TOKEN_SWITCH},
+        {"case", TOKEN_CASE},
+        {"default", TOKEN_DEFAULT},
+
 };
 
 Token::Token() : m_type(TOKEN_ILLEGAL){

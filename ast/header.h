@@ -19,3 +19,5 @@
 #include <ast/break.h>
 #include <ast/continue.h>
 #include <ast/for.h>
+#include <ast/switch.h>
+#include <ast/switch.h>
