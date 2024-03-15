@@ -1,7 +1,7 @@
 #pragma once
 #include <ast/node.h>
 #include <ast/block.h>
-#include <windns.h>
+
 
 namespace pi
 {
@@ -17,13 +17,16 @@ namespace pi
                 Json json;
                 json["type"] = name();
                 Json values;
+
                 for (auto &val : m_values)
                 {
                     values.append(val->json());
                 }
+
                 json["values"] = values;
                 json["body"] = m_body->json();
                 json["default"] = m_default ? "true" : "false";
+
                 return json;
             }
         public:
@@ -48,6 +51,7 @@ namespace pi
                     cases.append(elem->json());
                 }
                 json["cases"] = cases;
+//                printf("finish switch");
                 return json;
             }
         public:

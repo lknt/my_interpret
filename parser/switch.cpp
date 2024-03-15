@@ -44,7 +44,7 @@ std::shared_ptr<Expression> Parser::parse_switch() {
         {
             return nullptr;
         }
-        next_token();
+
         std::shared_ptr<Block> body(new Block());
         body->m_token = m_curr;
         next_token();

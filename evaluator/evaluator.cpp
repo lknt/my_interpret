@@ -199,6 +199,11 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node, 
             auto e = std::dynamic_pointer_cast<ast::For>(node);
             return eval_for(e, env);
         }
+        case Node::NODE_SWITCH:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Switch>(node);
+            return eval_switch(e, env);
+        }
         default:
         {
             return new_error("node type error");
