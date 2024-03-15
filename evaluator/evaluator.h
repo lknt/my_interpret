@@ -80,6 +80,11 @@ namespace pi
             std::shared_ptr<Object> eval_null_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_diff_type_operator_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
 
+            //index
+            std::shared_ptr<Object> eval_index_expression(const std::shared_ptr<ast::Index> & node, Environment * env);
+            std::shared_ptr<Object> eval_list_index_expression(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index, Environment * env);
+
+
             std::shared_ptr<Object> eval_prefix(const std::shared_ptr<ast::Prefix> &node, Environment * env);
             std::shared_ptr<Object> eval_minus_prefix_operator_expression(std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_tilde_prefix_operator_expression(std::shared_ptr<Object> & right);

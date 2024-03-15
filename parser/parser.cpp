@@ -39,6 +39,8 @@ std::map<Token::Type, int> Parser::m_precedences = {
         {Token::TOKEN_SLASH, PRODUCT},
         {Token::TOKEN_MODULO, PRODUCT},
 
+        {Token::TOKEN_LBRACKET, INDEX},
+
 
 
 };
@@ -95,6 +97,8 @@ std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {
         {Token::TOKEN_ASTERISK_ASSIGN, &Parser::parse_compound},
         {Token::TOKEN_MODULO_ASSIGN, &Parser::parse_compound},
         {Token::TOKEN_QUESTION, &Parser::parse_ternary},
+
+        {Token::TOKEN_LBRACKET, &Parser::parse_index},
 };
 
 std::map<Token::Type, Parser::postfix_parser_fn> Parser::m_postfix_parser_fns ={

@@ -21,3 +21,4 @@
 #include <ast/for.h>
 #include <ast/switch.h>
 #include <ast/list.h>
+#include <ast/index.h>

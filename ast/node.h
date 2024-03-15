@@ -56,6 +56,7 @@ namespace pi
                 NODE_CASE,
 
                 NODE_LIST,
+                NODE_INDEX,
 
             };
             Node() {}
