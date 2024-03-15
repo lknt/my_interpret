@@ -27,6 +27,11 @@ std::shared_ptr<Object> Evaluator::eval_compound(const std::shared_ptr<ast::Comp
             env->set(expr->m_value, val);
             return new_null();
         }
+        case Node::NODE_INDEX:
+        {
+            auto expr = std::dynamic_pointer_cast<ast::Index>(node->m_left);
+            return eval_index_assignment(expr, val, env);
+        }
         default:
         {
             return new_null();

@@ -15,6 +15,11 @@ std::shared_ptr<Object> Evaluator::eval_assign(const std::shared_ptr<ast::Assign
             env->set(e->m_value, obj);
             return new_null();
         }
+        case Node::NODE_INDEX:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Index>(node->m_name);
+            return eval_index_assignment(e, obj, env);
+        }
         default:
             break;
     }

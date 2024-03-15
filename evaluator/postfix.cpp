@@ -53,6 +53,12 @@ std::shared_ptr<Object> Evaluator::eval_postfix(const std::shared_ptr<ast::Postf
             env->set(expr->m_value, val);
             break;
         }
+        case Node::NODE_INDEX:
+        {
+            auto expr = std::dynamic_pointer_cast<ast::Index>(node->m_left);
+            return eval_index_assignment(expr, val, env);
+            break;
+        }
         default:
             break;
     }
