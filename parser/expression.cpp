@@ -43,3 +43,26 @@ std::shared_ptr<Expression> Parser::parse_expression(int precedence) {
     return e;
 }
 //(1+2)*3
+
+
+std::vector<std::shared_ptr<Expression>> Parser::parse_expression_list(Token::Type end) {
+    std::vector<std::shared_ptr<Expression>> expr_list;
+    if (peek_token_is(end))
+    {
+        next_token();
+        return expr_list;
+    }
+    next_token();
+    expr_list.push_back(parse_expression(LOWEST));
+    while(peek_token_is(Token::TOKEN_COMMA))
+    {
+        next_token();
+        next_token();
+        expr_list.push_back(parse_expression(LOWEST));
+    }
+    if (!expect_peek_token(end))
+    {
+        return std::vector<std::shared_ptr<Expression>>();
+    }
+    return expr_list;
+}

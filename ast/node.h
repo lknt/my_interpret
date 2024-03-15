@@ -55,6 +55,8 @@ namespace pi
                 NODE_SWITCH,
                 NODE_CASE,
 
+                NODE_LIST,
+
             };
             Node() {}
             Node(Type type) : m_type(type){}

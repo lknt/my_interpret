@@ -7,6 +7,9 @@
 #include <memory>
 #include <string>
 #include <cstdarg>
+#include <vector>
+#include <list>
+
 using std::string;
 
 namespace pi
@@ -41,6 +44,7 @@ namespace pi
                 OBJECT_NULL,
                 OBJECT_BREAK,
                 OBJECT_CONTINUE,
+                OBJECT_LIST,
             };
             Object(){}
             Object(Type type) : m_type(type) {}

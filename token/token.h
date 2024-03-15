@@ -106,6 +106,9 @@ namespace pi
 
                 TOKEN_COMMA,
 
+                TOKEN_LBRACKET,
+                TOKEN_RBRACKET,
+
 
             };
 

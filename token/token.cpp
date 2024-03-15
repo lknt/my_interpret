@@ -75,7 +75,10 @@ std::map<Token::Type, string> Token::m_name = {
         {TOKEN_SWITCH, "switch"},
         {TOKEN_CASE, "case"},
         {TOKEN_DEFAULT, "default"},
-        {TOKEN_COMMA, ","}
+        {TOKEN_COMMA, ","},
+
+        {TOKEN_LBRACKET, "["},
+        {TOKEN_RBRACKET, "]"},
 
 };
 

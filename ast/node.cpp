@@ -28,6 +28,8 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_SWITCH, "Switch"},
         {NODE_CASE, "Case"},
 
+        {NODE_LIST, "List"},
+
 
 };
 

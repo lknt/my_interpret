@@ -101,6 +101,7 @@ namespace pi
             std::list<string> & errors();
 
             std::shared_ptr<Expression> parse_expression(int precedence);
+            std::vector<std::shared_ptr<Expression>> parse_expression_list(Token::Type end);
 
 
             std::shared_ptr<Program> parse_program();
@@ -123,6 +124,7 @@ namespace pi
             std::shared_ptr<Expression> parse_while();
             std::shared_ptr<Expression> parse_for();
             std::shared_ptr<Expression> parse_switch();
+            std::shared_ptr<Expression> parse_list();
 
 
             //infix
