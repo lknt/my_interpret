@@ -10,7 +10,7 @@ namespace pi {
             Continue() : Object(OBJECT_CONTINUE) {}
             ~Continue() {}
 
-            virtual string str()
+            virtual string str() const
             {
                 return "continue";
             }

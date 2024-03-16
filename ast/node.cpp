@@ -31,6 +31,7 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_LIST, "List"},
 
         {NODE_INDEX, "Index"},
+        {NODE_HASH, "Hash"},
 
 
 };

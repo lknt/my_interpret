@@ -11,7 +11,7 @@ namespace pi {
             Error(const string & message) : Object(OBJECT_ERROR), m_message(message) {}
             ~Error() {}
 
-            virtual string str()
+            virtual string str() const
             {
                 return "error: " + m_message;
             }

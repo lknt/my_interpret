@@ -2,7 +2,7 @@
 
 using namespace pi::object;
 
-string List::str()
+string List::str() const
 {
     string s;
     s += "[";

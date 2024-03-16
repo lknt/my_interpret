@@ -12,7 +12,7 @@ namespace pi
             Integer() : Object(OBJECT_INTEGER), m_value(0) {}
             Integer(int64_t value) : Object(OBJECT_INTEGER), m_value(value) {}
             ~Integer() {}
-            virtual string str()
+            virtual string str() const
             {
                 return std::to_string(m_value);
             }

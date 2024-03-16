@@ -11,7 +11,7 @@ namespace pi
         public:
             Null() : Object(OBJECT_NULL) {}
            ~Null() {}
-            virtual string str()
+            virtual string str() const
             {
                 return "null";
             }

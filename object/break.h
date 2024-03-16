@@ -10,7 +10,7 @@ namespace pi {
             Break() : Object(OBJECT_BREAK) {}
             ~Break() {}
 
-            virtual string str()
+            virtual string str() const
             {
                 return "break";
             }

@@ -45,6 +45,7 @@ namespace pi
                 OBJECT_BREAK,
                 OBJECT_CONTINUE,
                 OBJECT_LIST,
+                OBJECT_HASH,
             };
             Object(){}
             Object(Type type) : m_type(type) {}
@@ -52,7 +53,7 @@ namespace pi
 
             Type type() const {return m_type;}
             string name() const;
-            virtual string str() = 0;
+            virtual string str() const = 0;
 
             static std::shared_ptr<Object> new_error(const char * format, ...);
             static std::shared_ptr<Object> new_integer(int64_t value);

@@ -11,7 +11,7 @@ namespace pi {
             Bool(bool value) : Object(OBJECT_BOOL), m_value(value) {}
             ~Bool() {}
 
-            virtual string str()
+            virtual string str() const
             {
                 return m_value ? "true" : "false";
             }

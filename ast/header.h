@@ -22,3 +22,4 @@
 #include <ast/switch.h>
 #include <ast/list.h>
 #include <ast/index.h>
+#include <ast/hash.h>

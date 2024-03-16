@@ -214,6 +214,11 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node, 
             auto e = std::dynamic_pointer_cast<ast::Index>(node);
             return eval_index_expression(e, env);
         }
+        case Node::NODE_HASH:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Hash>(node);
+            return eval_hash(e, env);
+        }
         default:
         {
             return new_error("node type error");

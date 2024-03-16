@@ -58,6 +58,8 @@ namespace pi
                 NODE_LIST,
                 NODE_INDEX,
 
+                NODE_HASH,
+
             };
             Node() {}
             Node(Type type) : m_type(type){}

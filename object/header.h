@@ -10,3 +10,5 @@
 #include <object/break.h>
 #include <object/continue.h>
 #include <object/list.h>
+#include <object/hash.h>
+#include <object/hashable.h>

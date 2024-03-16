@@ -12,7 +12,7 @@ namespace pi
             Float() : Object(OBJECT_FLOAT), m_value(0) {}
             Float(double value) : Object(OBJECT_FLOAT), m_value(value) {}
             ~Float() {}
-            virtual string str()
+            virtual string str() const
             {
                 return std::to_string(m_value);
             }

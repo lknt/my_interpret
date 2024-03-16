@@ -17,6 +17,7 @@ std::map<Object::Type, string> Object::m_names = {
         {OBJECT_BREAK, "break"},
         {OBJECT_CONTINUE, "continue"},
         {OBJECT_LIST, "list"},
+        {OBJECT_HASH, "hash"},
 };
 
 string Object::name() const {
