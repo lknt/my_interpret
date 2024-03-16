@@ -82,6 +82,11 @@ namespace pi
             std::shared_ptr<Object> eval_diff_type_operator_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_list_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_list_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
+            //in
+            std::shared_ptr<Object> eval_in(const std::shared_ptr<ast::In> & node, Environment * env);
+            std::shared_ptr<Object> eval_in_string(const std::shared_ptr<Object> & left,const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_in_list(const std::shared_ptr<Object> & left,const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_in_hash(const std::shared_ptr<Object> & left,const std::shared_ptr<Object> & right);
 
             //index
             std::shared_ptr<Object> eval_index_expression(const std::shared_ptr<ast::Index> & node, Environment * env);

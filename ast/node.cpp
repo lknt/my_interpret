@@ -35,6 +35,8 @@ std::map<Node::Type, string> Node::m_names = {
 
         {NODE_PROPERTY, "Property"},
 
+        {NODE_IN, "In"},
+
 };
 
 string Node::name() const

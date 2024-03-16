@@ -71,6 +71,7 @@ namespace pi
             {
                 LOWEST = 0,
                 ASSIGN,  //=   += -= /=
+                IN,
                 LOGIC,  //& | ^ << >>  && ||
                 TERNARY,
                 COMPARE,  // <=  >=  ==
@@ -136,6 +137,8 @@ namespace pi
             std::shared_ptr<Expression> parse_compound(const std::shared_ptr<Expression>&);
             std::shared_ptr<Expression> parse_index(const std::shared_ptr<Expression>&);
             std::shared_ptr<Expression> parse_dot(const std::shared_ptr<Expression>&);
+
+            std::shared_ptr<Expression> parse_in(const std::shared_ptr<Expression>&);
 
             std::shared_ptr<Expression> parse_ternary(const std::shared_ptr<Expression>&);
 

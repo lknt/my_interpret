@@ -81,6 +81,8 @@ std::map<Token::Type, string> Token::m_name = {
         {TOKEN_RBRACKET, "]"},
 
         {TOKEN_DOT, "."},
+
+        {TOKEN_IN, "in"},
 };
 
 std::map<string, Token::Type> Token::m_keywords = {
@@ -96,6 +98,7 @@ std::map<string, Token::Type> Token::m_keywords = {
         {"switch", TOKEN_SWITCH},
         {"case", TOKEN_CASE},
         {"default", TOKEN_DEFAULT},
+        {"in", TOKEN_IN},
 
 };
 

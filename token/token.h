@@ -111,6 +111,8 @@ namespace pi
 
                 TOKEN_DOT,
 
+                TOKEN_IN,
+
             };
 
             Token();

@@ -62,6 +62,8 @@ namespace pi
 
                 NODE_PROPERTY,
 
+                NODE_IN,
+
             };
             Node() {}
             Node(Type type) : m_type(type){}
