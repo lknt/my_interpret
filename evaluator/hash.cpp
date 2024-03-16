@@ -25,7 +25,11 @@ std::shared_ptr<Object> Evaluator::eval_hash(const std::shared_ptr<ast::Hash> &n
         HashPair hash_pair;
         hash_pair.m_key = key;
         hash_pair.m_value = val;
+//        printf("%llu\n", hashable->hash().m_value);
+//        printf("%s\n", hash_pair.m_value->str().c_str());
+
         hash->m_pairs[hashable->hash()] = hash_pair;
+//        printf("%llu\n", hashable->hash().m_value);
     }
     return hash;
 }

@@ -1,3 +1,1 @@
-hash={true : 3, 1:2, 2.13:3}
-hash.2=6
-hash.2
+{"true":3, true:4}

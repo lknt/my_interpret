@@ -1,5 +1,7 @@
 #include <iostream>
 #include <map>
+#include <cstdint>
+
 using namespace std;
 
 class complex{
@@ -61,8 +63,60 @@ istream & operator>>(istream & in, complex & A){
 }
 
 
+class HashKey
+{
+public:
+    HashKey() {}
+    HashKey(int type, int64_t value):m_type(type), m_value(value) {}
+    ~HashKey() {}
+
+    bool operator < (const HashKey & key) const
+    {
+        return m_value < key.m_value;
+    }
+    bool operator <= (const HashKey & key) const
+    {
+        return m_value <= key.m_value;
+    }
+    bool operator > (const HashKey & key) const
+    {
+        return m_value > key.m_value;
+    }
+    bool operator >= (const HashKey & key) const
+    {
+        return m_value >= key.m_value;
+    }
+    bool operator == (const HashKey & key) const
+    {
+        return m_value == key.m_value;
+    }
+    bool operator != (const HashKey & key) const
+    {
+        return m_value != key.m_value;
+    }
+public:
+    int m_type;
+    uint64_t m_value;
+};
+
+class Hashable
+{
+public:
+    virtual HashKey hash() = 0;
+};
+
 
 int main(){
+    std::map<HashKey, int> m;
+    auto h1 = new HashKey(1,114);
+    auto h2 = new HashKey(2,114);
 
+
+    m[*h1] = 1;
+    m[*h2] = 2;
+    for (auto &item:m)
+    {
+        printf("%d", item.second);
+    }
     return 0;
 }

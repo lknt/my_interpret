@@ -10,13 +10,14 @@ std::shared_ptr<Expression> Parser::parse_hash() {
     {
         next_token();
         auto key = parse_expression(LOWEST);
+//        printf("%d\n", key->m_type);
         if (!expect_peek_token(Token::TOKEN_COLON))
         {
             return nullptr;
         }
         next_token();
         auto value = parse_expression(LOWEST);
-        e->m_pairs[key] = value;
+        e->m_pairs.push_back({key, value});
         if (!peek_token_is(Token::TOKEN_RBRACE) && !expect_peek_token(Token::TOKEN_COMMA))
         {
             return nullptr;

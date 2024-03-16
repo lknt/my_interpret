@@ -1,11 +1,11 @@
 #pragma once
 #include <ast/node.h>
-#include <ast/block.h>
 
 namespace pi
 {
     namespace ast
     {
+
         class Hash : public Expression
         {
         public:
@@ -17,11 +17,14 @@ namespace pi
                 Json json;
                 json["type"] = name();
                 Json pairs;
-                for (auto & pair : m_pairs)
+                for (auto & p : m_pairs)
                 {
                     Json elem;
-                    elem["key"] = pair.first->json();
-                    elem["value"] = pair.second->json();
+//                    printf("%p\n",pair.first.get());
+//                    auto lit = std::dynamic_pointer_cast<ast::Integer>(pair.second);
+//                    printf("%d\n", lit->m_values);
+                    elem["key"] = p.first->json();
+                    elem["value"] = p.second->json();
                     pairs.append(elem);
                 }
                 json["pairs"] = pairs;
@@ -29,7 +32,7 @@ namespace pi
                 return json;
             }
         public:
-            std::map<std::shared_ptr<Expression>, std::shared_ptr<Expression>> m_pairs;
+            std::vector<std::pair<std::shared_ptr<Expression>, std::shared_ptr<Expression>>> m_pairs;
         };
     }
 }
