@@ -91,6 +91,9 @@ namespace pi
 
             //index assign
             std::shared_ptr<Object> eval_index_assignment(const std::shared_ptr<ast::Index> & name, const std::shared_ptr<Object> & val, Environment * env);
+            //property assignment
+            std::shared_ptr<Object> eval_property_assignment(const std::shared_ptr<ast::Property> & name, const std::shared_ptr<Object> & val, Environment * env);
+
             //给列表相应位置赋值
             std::shared_ptr<Object> eval_list_index_assignment(const std::shared_ptr<Object> & name, const std::shared_ptr<Object> & index, const std::shared_ptr<Object> & val);
             std::shared_ptr<Object> eval_hash_index_assignment(const std::shared_ptr<Object> & name, const std::shared_ptr<Object> & index, const std::shared_ptr<Object> & val);

@@ -10,6 +10,7 @@ std::shared_ptr<Expression> Parser::parse_assign(const std::shared_ptr<Expressio
     switch (left->type()) {
         case Node::NODE_IDENTIFIER:
         case Node::NODE_INDEX:
+        case Node::NODE_PROPERTY:
         {
             std::shared_ptr<Assign> e(new Assign());
             e->m_token = m_curr;

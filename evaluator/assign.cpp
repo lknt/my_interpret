@@ -20,6 +20,11 @@ std::shared_ptr<Object> Evaluator::eval_assign(const std::shared_ptr<ast::Assign
             auto e = std::dynamic_pointer_cast<ast::Index>(node->m_name);
             return eval_index_assignment(e, obj, env);
         }
+        case Node::NODE_PROPERTY:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Property>(node->m_name);
+            return eval_property_assignment(e, obj, env);
+        }
         default:
             break;
     }
