@@ -79,6 +79,8 @@ namespace pi
             std::shared_ptr<Object> eval_string_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_null_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_diff_type_operator_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_list_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_list_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right);
 
             //index
             std::shared_ptr<Object> eval_index_expression(const std::shared_ptr<ast::Index> & node, Environment * env);

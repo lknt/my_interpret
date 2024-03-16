@@ -39,6 +39,11 @@ std::shared_ptr<Object> Evaluator::eval_infix(const std::string &op, const std::
             {
                 return eval_string_integer_infix_expression(op, right, left);
             }
+            else if (right->type() == Object::OBJECT_LIST)
+            {
+                return eval_list_integer_infix_expression(op, right, left);
+
+            }
             else
             {
                 return eval_diff_type_operator_expression(op, left, right);
@@ -79,6 +84,21 @@ std::shared_ptr<Object> Evaluator::eval_infix(const std::string &op, const std::
             if (right->type() == Object::OBJECT_NULL)
             {
                 return eval_null_infix_expression(op, left, right);
+            }
+            else
+            {
+                return eval_diff_type_operator_expression(op, left, right);
+            }
+        }
+        case Object::OBJECT_LIST:
+        {
+            if (right->type() == Object::OBJECT_LIST)
+            {
+                return eval_list_infix_expression(op, left, right);
+            }
+            else if (right->type() == Object::OBJECT_INTEGER)
+            {
+                return eval_list_integer_infix_expression(op, left, right);
             }
             else
             {
@@ -300,4 +320,44 @@ std::shared_ptr<Object> Evaluator::eval_diff_type_operator_expression(const std:
     }
 
     return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
+}
+
+std::shared_ptr<Object> Evaluator::eval_list_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right)
+{
+    auto l = std::dynamic_pointer_cast<object::List>(left);
+    auto r = std::dynamic_pointer_cast<object::List>(right);
+    if (op == "+")
+    {
+        std::shared_ptr<object::List> _l(new object::List());
+        for (auto & elem : l->m_elements)
+        {
+            _l->m_elements.push_back(elem);
+        }
+        for (auto & elem : r->m_elements)
+        {
+            _l->m_elements.push_back(elem);
+        }
+        return _l;
+    }
+    return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
+}
+std::shared_ptr<Object> Evaluator::eval_list_integer_infix_expression(const string &op, const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & right)
+{
+    auto l = std::dynamic_pointer_cast<object::List>(left);
+    auto r = std::dynamic_pointer_cast<object::Integer>(right);
+    if (op == "*")
+    {
+        std::shared_ptr<object::List> _l(new object::List());
+        for (int i = 0; i < r->m_value; i ++)
+        {
+            for (auto & elem : l->m_elements)
+            {
+                _l->m_elements.push_back(elem);
+            }
+        }
+
+        return _l;
+    }
+    return new_error("unknown operator: %s %s %s\n", left->name().c_str(), op.c_str(), right->name().c_str());
+
 }
