@@ -46,6 +46,8 @@ namespace pi
                 OBJECT_CONTINUE,
                 OBJECT_LIST,
                 OBJECT_HASH,
+                OBJECT_FUNCTION,
+                OBJECT_RETURN,
             };
             Object(){}
             Object(Type type) : m_type(type) {}

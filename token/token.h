@@ -113,6 +113,8 @@ namespace pi
 
                 TOKEN_IN,
 
+                TOKEN_FUNCTION,
+                TOKEN_RETURN,
             };
 
             Token();

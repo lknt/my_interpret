@@ -12,3 +12,5 @@
 #include <object/list.h>
 #include <object/hash.h>
 #include <object/hashable.h>
+#include <object/return.h>
+#include <object/function.h>

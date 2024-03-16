@@ -67,7 +67,8 @@ namespace pi
             std::shared_ptr<Object> eval_switch(const std::shared_ptr<ast::Switch> & node, Environment * env);
             std::shared_ptr<Object> eval_list(const std::shared_ptr<ast::List> & node, Environment * env);
             std::shared_ptr<Object> eval_hash(const std::shared_ptr<ast::Hash> & node, Environment * env);
-
+            std::shared_ptr<Object> eval_function(const std::shared_ptr<ast::Function> & node, Environment * env);
+            std::shared_ptr<Object> eval_return(const std::shared_ptr<ast::Return> & node, Environment * env);
 
 
             std::shared_ptr<Object> eval_null();

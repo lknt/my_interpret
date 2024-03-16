@@ -83,6 +83,9 @@ std::map<Token::Type, string> Token::m_name = {
         {TOKEN_DOT, "."},
 
         {TOKEN_IN, "in"},
+
+        {TOKEN_FUNCTION, "function"},
+        {TOKEN_RETURN, "return"},
 };
 
 std::map<string, Token::Type> Token::m_keywords = {
@@ -99,6 +102,8 @@ std::map<string, Token::Type> Token::m_keywords = {
         {"case", TOKEN_CASE},
         {"default", TOKEN_DEFAULT},
         {"in", TOKEN_IN},
+        {"fn", TOKEN_FUNCTION},
+        {"return", TOKEN_RETURN},
 
 };
 

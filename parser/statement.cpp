@@ -13,6 +13,8 @@ std::shared_ptr<Statement> Parser::parse_statement()
             return parse_break();
         case Token::TOKEN_CONTINUE:
             return parse_continue();
+        case Token::TOKEN_RETURN:
+            return parse_return();
         default:
             return parse_expression_statement();
     }

@@ -113,6 +113,7 @@ namespace pi
             std::shared_ptr<Block> parse_block();
             std::shared_ptr<Break> parse_break();
             std::shared_ptr<Continue> parse_continue();
+            std::shared_ptr<Return> parse_return();
 
             //prefix
             std::shared_ptr<Expression> parse_integer();
@@ -129,6 +130,8 @@ namespace pi
             std::shared_ptr<Expression> parse_switch();
             std::shared_ptr<Expression> parse_list();
             std::shared_ptr<Expression> parse_hash();
+            std::shared_ptr<Expression> parse_function();
+            bool parse_function_parameters(const std::shared_ptr<Function> & fn);
 
 
             //infix

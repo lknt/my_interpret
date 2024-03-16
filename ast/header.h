@@ -25,3 +25,5 @@
 #include <ast/hash.h>
 #include <ast/property.h>
 #include <ast/in.h>
+#include <ast/return.h>
+#include <ast/function.h>

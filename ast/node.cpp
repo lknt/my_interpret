@@ -36,6 +36,8 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_PROPERTY, "Property"},
 
         {NODE_IN, "In"},
+        {NODE_FUNCTION, "Function"},
+        {NODE_RETURN, "Return"},
 
 };
 
