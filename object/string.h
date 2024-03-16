@@ -19,9 +19,11 @@ namespace pi
             }
             virtual HashKey hash()
             {
+                std::hash<string> hash_func;
+                auto hash_code = hash_func(m_value);
                 HashKey h;
                 h.m_type = type();
-                h.m_value = m_value;
+                h.m_value = hash_code;
                 return h;
             }
 

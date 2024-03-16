@@ -1,12 +1,13 @@
 #pragma once
 
 #include <object/object.h>
+#include <object/hashable.h>
 
 namespace pi
 {
     namespace object
     {
-        class Integer : public Object
+        class Integer : public Object, public Hashable
         {
         public:
             Integer() : Object(OBJECT_INTEGER), m_value(0) {}
@@ -16,7 +17,16 @@ namespace pi
             {
                 return std::to_string(m_value);
             }
+            virtual HashKey hash()
+            {
+                std::hash<string> hash_func;
+                auto hash_code = hash_func(std::to_string(m_value));
 
+                HashKey h;
+                h.m_type = type();
+                h.m_value = hash_code;
+                return h;
+            }
         public:
             int64_t m_value;
         };

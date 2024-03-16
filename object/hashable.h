@@ -36,7 +36,7 @@ namespace pi {
             }
         public:
             Object::Type m_type;
-            string m_value;
+            uint64_t m_value;
         };
 
         class Hashable

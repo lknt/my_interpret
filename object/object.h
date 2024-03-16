@@ -66,7 +66,6 @@ namespace pi
 
         protected:
             Type m_type;
-            int64_t m_value;
             static std::map<Type, string> m_names;
         };
     }

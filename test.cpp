@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 using namespace std;
 
 class complex{
@@ -62,19 +63,6 @@ istream & operator>>(istream & in, complex & A){
 
 
 int main(){
-    complex c1(1,2), c2(3,4), c3;
-
-    c3 = c1 + c2;
-    cout<<"c1 + c2 = "<<c3<<endl;
-
-    c3 = c1 - c2;
-    cout<<"c1 - c2 = "<<c3<<endl;
-
-    c3 = c1 * c2;
-    cout<<"c1 * c2 = "<<c3<<endl;
-
-    c3 = c1 / c2;
-    cout<<"c1 / c2 = "<<c3<<endl;
 
     return 0;
 }
