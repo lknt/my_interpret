@@ -531,6 +531,12 @@ Token Lexer::next_token() {
             literal += m_ch;
             return new_token(Token::TOKEN_RBRACKET, literal);
         }
+        case '.':
+        {
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_DOT, literal);
+        }
         case 0:
         {
             return new_token(Token::TOKEN_EOF, "");

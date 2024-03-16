@@ -94,8 +94,9 @@ namespace pi
             //给列表相应位置赋值
             std::shared_ptr<Object> eval_list_index_assignment(const std::shared_ptr<Object> & name, const std::shared_ptr<Object> & index, const std::shared_ptr<Object> & val);
             std::shared_ptr<Object> eval_hash_index_assignment(const std::shared_ptr<Object> & name, const std::shared_ptr<Object> & index, const std::shared_ptr<Object> & val);
+            std::shared_ptr<Object> eval_property_expression(const std::shared_ptr<ast::Property> & node, Environment * env);
 
-
+            //prefix
             std::shared_ptr<Object> eval_prefix(const std::shared_ptr<ast::Prefix> &node, Environment * env);
             std::shared_ptr<Object> eval_minus_prefix_operator_expression(std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_tilde_prefix_operator_expression(std::shared_ptr<Object> & right);

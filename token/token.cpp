@@ -80,6 +80,7 @@ std::map<Token::Type, string> Token::m_name = {
         {TOKEN_LBRACKET, "["},
         {TOKEN_RBRACKET, "]"},
 
+        {TOKEN_DOT, "."},
 };
 
 std::map<string, Token::Type> Token::m_keywords = {

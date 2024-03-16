@@ -23,3 +23,4 @@
 #include <ast/list.h>
 #include <ast/index.h>
 #include <ast/hash.h>
+#include <ast/property.h>

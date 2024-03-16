@@ -41,6 +41,7 @@ std::map<Token::Type, int> Parser::m_precedences = {
 
         {Token::TOKEN_LBRACKET, INDEX},
 
+        {Token::TOKEN_DOT, DOT},
 
 
 };
@@ -100,6 +101,8 @@ std::map<Token::Type, Parser::infix_parser_fn> Parser::m_infix_parser_fns = {
         {Token::TOKEN_QUESTION, &Parser::parse_ternary},
 
         {Token::TOKEN_LBRACKET, &Parser::parse_index},
+        {Token::TOKEN_DOT, &Parser::parse_dot},
+
 };
 
 std::map<Token::Type, Parser::postfix_parser_fn> Parser::m_postfix_parser_fns ={

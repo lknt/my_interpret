@@ -78,6 +78,7 @@ namespace pi
                 PRODUCT, // *  /  %
                 PREFIX, // -a  ~a  !a   !a
                 INDEX,
+                DOT,
             };
             Parser();
             Parser(std::shared_ptr<Lexer>& lexer);
@@ -134,6 +135,7 @@ namespace pi
             std::shared_ptr<Expression> parse_assign(const std::shared_ptr<Expression>&);
             std::shared_ptr<Expression> parse_compound(const std::shared_ptr<Expression>&);
             std::shared_ptr<Expression> parse_index(const std::shared_ptr<Expression>&);
+            std::shared_ptr<Expression> parse_dot(const std::shared_ptr<Expression>&);
 
             std::shared_ptr<Expression> parse_ternary(const std::shared_ptr<Expression>&);
 

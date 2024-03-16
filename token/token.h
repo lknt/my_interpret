@@ -109,6 +109,7 @@ namespace pi
                 TOKEN_LBRACKET,
                 TOKEN_RBRACKET,
 
+                TOKEN_DOT,
 
             };
 
