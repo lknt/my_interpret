@@ -94,6 +94,10 @@ std::shared_ptr<Object> Evaluator::eval_index_assignment(const std::shared_ptr<a
         {
             return eval_list_index_assignment(left, index, val);
         }
+        case Object::OBJECT_HASH:
+        {
+            return eval_hash_index_assignment(left, index, val);
+        }
         default:
             break;
     }
@@ -146,6 +150,23 @@ std::shared_ptr<Object> Evaluator::eval_list_index_assignment(const std::shared_
     {
         l->m_elements[idx] = val;
     }
+    return new_null();
+
+}
+
+std::shared_ptr<Object> Evaluator::eval_hash_index_assignment(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index, const std::shared_ptr<Object> & val)
+{
+    auto l = std::dynamic_pointer_cast<object::Hash>(left);
+    auto hashable = std::dynamic_pointer_cast<object::Hashable>(index);
+    if (!hashable)
+    {
+        return new_error("object not support hashable: %s", index->name().c_str());
+    }
+    HashPair pair;
+    pair.m_key = index;
+    pair.m_value = val;
+    l->m_pairs[hashable->hash()] = pair;
+
     return new_null();
 
 }
