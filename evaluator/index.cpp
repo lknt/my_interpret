@@ -16,17 +16,15 @@ std::shared_ptr<Object> Evaluator::eval_index_expression(const std::shared_ptr<a
     switch (left->type()) {
         case Object::OBJECT_LIST:
         {
-            if (index->type() == Object::OBJECT_INTEGER)
-            {
-                return eval_list_index_expression(left, index);
-            }
+            return eval_list_index_expression(left, index);
         }
         case Object::OBJECT_STRING:
         {
-            if (index->type() == Object::OBJECT_INTEGER)
-            {
-                return eval_string_index_expression(left, index);
-            }
+            return eval_string_index_expression(left, index);
+        }
+        case Object::OBJECT_HASH:
+        {
+            return eval_hash_index_expression(left, index);
         }
 
     }
@@ -34,6 +32,10 @@ std::shared_ptr<Object> Evaluator::eval_index_expression(const std::shared_ptr<a
 }
 std::shared_ptr<Object> Evaluator::eval_list_index_expression(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index)
 {
+    if (index->type() != Object::OBJECT_INTEGER)
+    {
+        return new_error("index is not integer");
+    }
     auto l = std::dynamic_pointer_cast<object::List>(left);
     auto i = std::dynamic_pointer_cast<object::Integer>(index);
     auto idx = i->m_value;
@@ -51,6 +53,10 @@ std::shared_ptr<Object> Evaluator::eval_list_index_expression(const std::shared_
 
 std::shared_ptr<Object> Evaluator::eval_string_index_expression(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index)
 {
+    if (index->type() != Object::OBJECT_INTEGER)
+    {
+        return new_error("index is not integer");
+    }
     auto l = std::dynamic_pointer_cast<object::String>(left);
     auto i = std::dynamic_pointer_cast<object::Integer>(index);
     auto idx = i->m_value;
@@ -93,6 +99,23 @@ std::shared_ptr<Object> Evaluator::eval_index_assignment(const std::shared_ptr<a
     }
     return new_error("index assignment error: %s", left->name().c_str());
 }
+
+std::shared_ptr<Object> Evaluator::eval_hash_index_expression(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index)
+{
+    auto l = std::dynamic_pointer_cast<object::Hash>(left);
+    auto hashable = std::dynamic_pointer_cast<object::Hashable>(index);
+    if (!hashable)
+    {
+        return new_error("object not support hashable: %s", index->name().c_str());
+    }
+    auto it = l->m_pairs.find(hashable->hash());
+    if (it != l->m_pairs.end())
+    {
+        return it->second.m_value;
+    }
+    return new_null();
+}
+
 std::shared_ptr<Object> Evaluator::eval_list_index_assignment(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index, const std::shared_ptr<Object> & val)
 {
     auto l = std::dynamic_pointer_cast<object::List>(left);

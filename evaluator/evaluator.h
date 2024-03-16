@@ -87,6 +87,7 @@ namespace pi
             std::shared_ptr<Object> eval_index_expression(const std::shared_ptr<ast::Index> & node, Environment * env);
             std::shared_ptr<Object> eval_list_index_expression(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index);
             std::shared_ptr<Object> eval_string_index_expression(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index);
+            std::shared_ptr<Object> eval_hash_index_expression(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index);
 
             //index assign
             std::shared_ptr<Object> eval_index_assignment(const std::shared_ptr<ast::Index> & name, const std::shared_ptr<Object> & val, Environment * env);
