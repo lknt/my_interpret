@@ -14,7 +14,7 @@ namespace pi
                 outer->m_inner.push_back(this);
             }
             ~Environment(){
-                printf("%p\n", this);
+//                printf("%p\n", this);
                 for (auto & env : m_inner)
                 {
                     delete env;

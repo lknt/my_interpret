@@ -12,9 +12,34 @@ std::shared_ptr<Object> Evaluator::eval_call(const std::shared_ptr<ast::Call> &n
         case Object::OBJECT_FUNCTION:
         {
             auto fn = std::dynamic_pointer_cast<object::Function>(obj);
-            for (int i = 0; i < node->m_arguments.size(); i ++)
+            //函数调用 参数准备阶段
+//            for (int i = 0; i < node->m_arguments.size(); i ++)
+//            {
+//                auto arg = eval(node->m_arguments[i], env);
+//                if (is_error(arg))
+//                {
+//                    return arg;
+//                }
+//                args.push_back(arg);
+//            }
+            for (int i = 0; i < fn->m_parameters.size(); i ++)
             {
-                auto arg = eval(node->m_arguments[i], env);
+                std::shared_ptr<Object> arg;
+                if (i < node->m_arguments.size())
+                {
+                    arg = eval(node->m_arguments[i], env);
+                }
+                else
+                {
+                    auto ident = fn->m_parameters[i];
+                    auto it = fn->m_defaults.find(ident->m_value);
+                    if (it == fn->m_defaults.end())
+                    {
+                        return new_error("function arguments missing: %s", ident->m_value.c_str());
+                    }
+                    arg = eval(it->second, env);
+
+                }
                 if (is_error(arg))
                 {
                     return arg;

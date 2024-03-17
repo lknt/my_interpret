@@ -22,6 +22,7 @@ namespace pi
             }
         public:
             std::vector<std::shared_ptr<Identifier>> m_parameters;
+            std::map<string, std::shared_ptr<Expression>> m_defaults;
             std::shared_ptr<Block> m_body;
             Environment * m_env = nullptr;  // 指向外部作用域
         };

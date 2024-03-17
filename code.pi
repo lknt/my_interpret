@@ -1,8 +1,4 @@
-f = fn(x) {
-    return fn(y) {
-        return x + y
-    }
+f = fn(x, y = 1) {
+    return x + y
 }
-
-f1 = f(2)
-f1(5)
+f(4)

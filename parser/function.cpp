@@ -37,6 +37,21 @@ bool Parser::parse_function_parameters(const std::shared_ptr<Function> &fn) {
         ident->m_token = m_curr;
         ident->m_value = m_curr.literal();
         fn->m_parameters.push_back(ident);
+
+        // 处理默认参数
+        if (peek_token_is(Token::TOKEN_ASSIGN))
+        {
+            next_token();
+            next_token();
+            fn->m_defaults[ident->m_value] = parse_expression(LOWEST);
+        }
+        else
+        {
+            if (!fn->m_defaults.empty())
+            {
+                return false;
+            }
+        }
     }
     if (!expect_peek_token(Token::TOKEN_RPAREN))
     {
