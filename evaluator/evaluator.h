@@ -91,7 +91,7 @@ namespace pi
             //call
             std::shared_ptr<Object> eval_call(const std::shared_ptr<ast::Call> & node, Environment * env);
             std::shared_ptr<Object> apply_function(const std::shared_ptr<Object> & fn, const std::vector<std::shared_ptr<Object>> &args);
-            bool extend_function_env(const std::shared_ptr<object::Function> & fn, const std::vector<std::shared_ptr<Object>> &args);
+            Environment * extend_function_env(const std::shared_ptr<object::Function> & fn, const std::vector<std::shared_ptr<Object>> &args);
 
             //index
             std::shared_ptr<Object> eval_index_expression(const std::shared_ptr<ast::Index> & node, Environment * env);

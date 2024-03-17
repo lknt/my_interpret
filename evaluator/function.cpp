@@ -6,6 +6,6 @@ std::shared_ptr<Object> Evaluator::eval_function(const std::shared_ptr<ast::Func
     std::shared_ptr<object::Function> fn(new object::Function());
     fn->m_parameters = node->m_parameters;
     fn->m_body = node->m_body;
-    fn->m_env = new Environment(env);
+    fn->m_env = env;
     return fn;
 }

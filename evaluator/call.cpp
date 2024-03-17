@@ -37,10 +37,11 @@ std::shared_ptr<Object> Evaluator::apply_function(const std::shared_ptr<Object> 
         case Object::OBJECT_FUNCTION:
         {
             auto func = std::dynamic_pointer_cast<object::Function>(fn);
-            if (!extend_function_env(func, args)){
-                return new_error("function arguments not matched");
+            auto ext_env = extend_function_env(func, args);
+            if (!ext_env){
+                return new_error("extend function environment");
             }
-            auto obj = eval(func->m_body, func->m_env);
+            auto obj = eval(func->m_body, ext_env);
             if (obj->type() == Object::OBJECT_RETURN)
             {
                 auto ret = std::dynamic_pointer_cast<object::Return>(obj);
@@ -55,16 +56,17 @@ std::shared_ptr<Object> Evaluator::apply_function(const std::shared_ptr<Object> 
     }
 }
 
-bool Evaluator::extend_function_env(const std::shared_ptr<object::Function> &fn,
-                                                       const std::vector<std::shared_ptr<Object>> &args) {
+Environment * Evaluator::extend_function_env(const std::shared_ptr<object::Function> &fn,
+                                    const std::vector<std::shared_ptr<Object>> &args) {
     if (fn->m_parameters.size() != args.size())
     {
 //        printf("%d %d\n", fn->m_parameters.size(), args.size());
-        return false;
+        return nullptr;
     }
+    Environment * env = new Environment(fn->m_env);
     for (int i = 0; i < fn->m_parameters.size(); i ++)
     {
-        fn->m_env->set(fn->m_parameters[i]->m_value, args[i]);
+        env->set(fn->m_parameters[i]->m_value, args[i]);
     }
-    return true;
+    return env;
 }
