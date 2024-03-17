@@ -239,6 +239,11 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<ast::Node> &node, 
             auto e = std::dynamic_pointer_cast<ast::Return>(node);
             return eval_return(e, env);
         }
+        case Node::NODE_CALL:
+        {
+            auto e = std::dynamic_pointer_cast<ast::Call>(node);
+            return eval_call(e, env);
+        }
         default:
         {
             return new_error("node type error: %s", node->name().c_str());

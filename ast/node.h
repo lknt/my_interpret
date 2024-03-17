@@ -67,6 +67,8 @@ namespace pi
                 NODE_FUNCTION,
                 NODE_RETURN,
 
+                NODE_CALL,
+
             };
             Node() {}
             Node(Type type) : m_type(type){}

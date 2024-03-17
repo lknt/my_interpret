@@ -17,14 +17,18 @@ std::shared_ptr<Object> Evaluator::eval_for(const std::shared_ptr<ast::For> &nod
         {
             break;
         }
-        auto body = eval(node->m_body, env);
-        if (is_error(body)) {
-            return body;
+        auto obj = eval(node->m_body, env);
+        if (is_error(obj)) {
+            return obj;
         }
-        auto type = body->type();
+        auto type = obj->type();
         if (type == Object::OBJECT_BREAK)
         {
             break;
+        }
+        else if (type == Object::OBJECT_RETURN)
+        {
+            return obj;
         }
         else if (type == Object::OBJECT_CONTINUE)
         {

@@ -78,6 +78,7 @@ namespace pi
                 SUM,   // + -
                 PRODUCT, // *  /  %
                 PREFIX, // -a  ~a  !a   !a
+                CALL,
                 INDEX,
                 DOT,
             };
@@ -142,6 +143,7 @@ namespace pi
             std::shared_ptr<Expression> parse_dot(const std::shared_ptr<Expression>&);
 
             std::shared_ptr<Expression> parse_in(const std::shared_ptr<Expression>&);
+            std::shared_ptr<Expression> parse_call(const std::shared_ptr<Expression>&);
 
             std::shared_ptr<Expression> parse_ternary(const std::shared_ptr<Expression>&);
 

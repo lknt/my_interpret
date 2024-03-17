@@ -39,6 +39,8 @@ std::map<Node::Type, string> Node::m_names = {
         {NODE_FUNCTION, "Function"},
         {NODE_RETURN, "Return"},
 
+        {NODE_CALL, "Call"},
+
 };
 
 string Node::name() const

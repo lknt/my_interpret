@@ -10,13 +10,17 @@ std::shared_ptr<Object> Evaluator::eval_while(const std::shared_ptr<ast::While> 
     }
     while (is_true(condition))
     {
-        auto evaluated = eval(node->m_body, env);
-        if (is_error(evaluated)) {
-            return evaluated;
+        auto obj = eval(node->m_body, env);
+        if (is_error(obj)) {
+            return obj;
         }
-        if (evaluated->type() == Object::OBJECT_BREAK)
+        if (obj->type() == Object::OBJECT_BREAK)
         {
             break;
+        }
+        else if (obj->type() == Object::OBJECT_RETURN)
+        {
+            return obj;
         }
         condition = eval(node->m_condition, env);
         if (is_error(condition)){

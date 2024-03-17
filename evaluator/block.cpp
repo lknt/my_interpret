@@ -11,14 +11,19 @@ std::shared_ptr<Object> Evaluator::eval_block(const std::shared_ptr<ast::Block> 
         {
             return obj;
         }
-        Object::Type type = obj->type();
-        if (type == Object::OBJECT_BREAK || type == Object::OBJECT_CONTINUE)
-        {
-            return obj;
-        }
-
 
         // todo: 处理return
+        switch (obj->type()) {
+            case Object::OBJECT_BREAK:
+            case Object::OBJECT_CONTINUE:
+            case Object::OBJECT_RETURN:
+            {
+                return obj;
+            }
+            default:
+                break;
+        }
+
     }
     return new_null();
 }

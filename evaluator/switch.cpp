@@ -3,10 +3,10 @@ using namespace pi::evaluator;
 
 std::shared_ptr<Object> Evaluator::eval_switch(const std::shared_ptr<ast::Switch> &node,
                                                pi::evaluator::Environment *env) {
-    auto obj = eval(node->m_value, env);
-    if (is_error(obj))
+    auto val = eval(node->m_value, env);
+    if (is_error(val))
     {
-        return obj;
+        return val;
     }
     for (auto & opt : node->m_cases)
     {
@@ -17,9 +17,17 @@ std::shared_ptr<Object> Evaluator::eval_switch(const std::shared_ptr<ast::Switch
         for (auto & exp : opt->m_values)
         {
             auto res = eval(exp, env);
-            if (obj->type() == res->type() && obj->str() == res->str())
+            if (val->type() == res->type() && val->str() == res->str())
             {
-                eval_block(opt->m_body, env);
+                auto obj = eval_block(opt->m_body, env);
+                if (is_error(obj))
+                {
+                    return obj;
+                }
+                if (obj->type() == Object::OBJECT_RETURN)
+                {
+                    return obj;
+                }
                 return new_null();
             }
         }
@@ -28,8 +36,16 @@ std::shared_ptr<Object> Evaluator::eval_switch(const std::shared_ptr<ast::Switch
     {
         if (opt->m_default)
         {
-            eval_block(opt->m_body, env);
-            return new_null();
+            auto obj = eval_block(opt->m_body, env);
+            if (is_error(obj))
+            {
+                return obj;
+            }
+            if (obj->type() == Object::OBJECT_RETURN)
+            {
+                return obj;
+            }
+            break;
         }
     }
     return new_null();
