@@ -37,7 +37,7 @@ std::shared_ptr<Object> Evaluator::apply_function(const std::shared_ptr<Object> 
         case Object::OBJECT_FUNCTION:
         {
             auto func = std::dynamic_pointer_cast<object::Function>(fn);
-            auto ext_env = extend_function_env(func, args);
+            auto ext_env = extend_function_env(func, args); //新建一个运行时作用域
             if (!ext_env){
                 return new_error("extend function environment");
             }

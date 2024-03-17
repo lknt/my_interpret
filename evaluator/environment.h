@@ -10,8 +10,19 @@ namespace pi
         {
         public:
             Environment() : m_outer(nullptr){}
-            Environment(Environment * outer) : m_outer(outer) {}
-            ~Environment(){}
+            Environment(Environment * outer) : m_outer(outer) {
+                outer->m_inner.push_back(this);
+            }
+            ~Environment(){
+                printf("%p\n", this);
+                for (auto & env : m_inner)
+                {
+                    delete env;
+                    env = nullptr;
+                }
+                m_inner.clear();
+                clear();
+            }
 
             void set(const string & name, const std::shared_ptr<Object> & value)
             {
@@ -61,7 +72,8 @@ namespace pi
             }
         private:
             std::map<string, std::shared_ptr<Object>> m_store;
-            std::shared_ptr<Environment> m_outer;
+            Environment * m_outer;
+            std::vector<Environment *> m_inner;
         };
     }
 }
