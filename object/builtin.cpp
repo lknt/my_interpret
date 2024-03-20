@@ -6,6 +6,7 @@
 #include <object/bool.h>
 #include <object/list.h>
 #include <object/hash.h>
+
 using namespace pi::object;
 
 std::map<string, Builtin::method> Builtin::m_methods = {
