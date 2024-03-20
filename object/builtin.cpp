@@ -117,7 +117,36 @@ std::shared_ptr<Object> Builtin::_int(const std::vector<std::shared_ptr<Object>>
     return new_error("argument to `int` not supported, got: %s", arg->name().c_str());
 }
 std::shared_ptr<Object> Builtin::_float(const std::vector<std::shared_ptr<Object>> & args){
-    return new_null();
+    if (args.size() != 1)
+    {
+        return new_error("wrong number of arguments. `type()` got=%d", args.size());
+    }
+    auto arg =args[0];
+    switch (arg->type()) {
+        case Object::OBJECT_BOOL:
+        {
+            auto obj = std::dynamic_pointer_cast<Bool>(arg);
+            return new_float(obj->m_value ? 1 : 0);
+        }
+        case Object::OBJECT_INTEGER:
+        {
+            auto obj = std::dynamic_pointer_cast<Integer>(arg);
+            return new_float((double)obj->m_value);
+        }
+        case Object::OBJECT_FLOAT:
+        {
+            auto obj = std::dynamic_pointer_cast<Float>(arg);
+            return new_float(obj->m_value);
+        }
+        case Object::OBJECT_STRING:
+        {
+            auto obj = std::dynamic_pointer_cast<String>(arg);
+            return new_float(std::stod(obj->m_value));
+        }
+        default:
+            break;
+    }
+    return new_error("argument to `float` not supported, got: %s", arg->name().c_str());
 }
 std::shared_ptr<Object> Builtin::_str(const std::vector<std::shared_ptr<Object>> & args){
     return new_null();
