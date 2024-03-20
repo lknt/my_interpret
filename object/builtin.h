@@ -16,6 +16,12 @@ namespace pi {
         private:
             //内置函数实现
             std::shared_ptr<Object> _print(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _type(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _len(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _int(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _float(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _str(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _exit(const std::vector<std::shared_ptr<Object>> & args);
 
             virtual string str() const
             {
