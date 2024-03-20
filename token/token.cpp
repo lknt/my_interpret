@@ -165,6 +165,8 @@ Token& Token::operator=(const Token &other)
     }
     m_type = other.m_type;
     m_literal = other.m_literal;
+    m_line = other.m_line;
+    m_column = other.m_column;
     return *this;
 }
 

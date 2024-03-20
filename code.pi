@@ -1,2 +1,13 @@
-name=1
-[1, 1 + 2, name, true]
+add = fn(x, y) {
+    return x + y
+}
+
+foo = fn(a,b) {
+    a = 1
+    b = 2
+    return
+}
+a=4
+foo(1,2)
+
+a
