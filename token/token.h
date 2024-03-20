@@ -118,11 +118,15 @@ namespace pi
             };
 
             Token();
-            Token(Type type, const string& literal);
+            Token(Type type, const string& literal, int line, int column);
 
             Type type() const;
             string name() const;
             string literal() const;
+
+            int line() const;
+            int column() const;
+
             string show() const;
             Json json() const;
 
@@ -136,6 +140,8 @@ namespace pi
         private:
             Type m_type;
             string m_literal;
+            int m_column;
+            int m_line;
         public:
             static std::map<Type, string> m_name;
             static std::map<string, Type> m_keywords;

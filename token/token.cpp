@@ -111,7 +111,7 @@ Token::Token() : m_type(TOKEN_ILLEGAL){
 
 }
 
-Token::Token(pi::token::Token::Type type, const std::string& literal) : m_type(type), m_literal(literal){
+Token::Token(pi::token::Token::Type type, const std::string& literal, int line, int column) : m_type(type), m_literal(literal), m_column(column), m_line(line){
 }
 
 Token::Type Token::type() const
@@ -128,6 +128,15 @@ string Token::name() const
     }
     return "";
 }
+
+int Token::line() const
+{
+    return m_line;
+}
+int Token::column() const
+{
+    return m_column;
+}
 string Token::literal() const
 {
     return m_literal;
@@ -135,7 +144,7 @@ string Token::literal() const
 
 string Token::show() const
 {
-    string res = "token " + literal() + " is " + name();
+    string res = "token " + literal() + " is " + name() + "line,column = " + std::to_string(m_line) + ", " + std::to_string(m_column);
     return res;
 }
 Json Token::json() const
@@ -143,6 +152,8 @@ Json Token::json() const
     Json json;
     json["type"] = type();
     json["name"] = m_literal;
+    json["line"] = m_line;
+    json["column"] = m_column;
     return json;
 }
 

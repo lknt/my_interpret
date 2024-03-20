@@ -10,6 +10,8 @@ Lexer::Lexer() {
     m_ch = 0;
     m_pos = 0;
     m_next_pos = 0;
+    m_line = 1;
+    m_column = 0;
 }
 
 
@@ -28,6 +30,8 @@ Lexer::Lexer(const std::string &file) {
     std::ostringstream oss;
     oss << ifs.rdbuf();
     m_input = oss.str();
+    m_line = 1;
+    m_column = 0;
 }
 
 Lexer::Lexer(const char *buf, int len) {
@@ -35,6 +39,8 @@ Lexer::Lexer(const char *buf, int len) {
     m_pos = 0;
     m_next_pos = 0;
     m_input.assign(buf, len);
+    m_line = 1;
+    m_column = 0;
 }
 
 
@@ -73,6 +79,19 @@ void Lexer::skip_white_space()
 {
     while (m_ch == ' ' || m_ch == '\t' || m_ch == '\n')
     {
+        if (m_ch == '\n')
+        {
+            m_line ++;
+            m_column = 0;
+        }
+        else if (m_ch == ' ')
+        {
+            m_column ++;
+        }
+        else if (m_ch == '\t')
+        {
+            m_column += 4;
+        }
         read_char();
     }
 }
@@ -112,7 +131,12 @@ string Lexer::read_identifier() {
 }
 
 Token Lexer::new_token(Token::Type type, const std::string &literal) {
-    Token token(type, literal);
+    Token token(type, literal, m_line, m_column);
+    m_column += (int)literal.length();
+    if (type == Token::TOKEN_STRING)
+    {
+        m_column += 2;
+    }
     return token;
 }
 

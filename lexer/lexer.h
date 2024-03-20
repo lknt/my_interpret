@@ -65,6 +65,8 @@ namespace pi
             char m_ch;
             int m_pos;
             int m_next_pos;
+            int m_line;
+            int m_column;
         };
     }
 }

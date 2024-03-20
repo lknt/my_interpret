@@ -38,7 +38,7 @@ std::shared_ptr<Expression> Parser::parse_if()
         else
         {
             //只有else
-            Token token(Token::TOKEN_TRUE, "true");
+            Token token(Token::TOKEN_TRUE, "true", m_curr.line(), m_curr.column());
             std::shared_ptr<Bool> b(new Bool());
             b->m_token = token;
             b->m_value = true;
