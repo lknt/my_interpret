@@ -86,6 +86,7 @@ std::map<Token::Type, string> Token::m_name = {
 
         {TOKEN_FUNCTION, "function"},
         {TOKEN_RETURN, "return"},
+        {TOKEN_BULITIN, "builtin"},
 };
 
 std::map<string, Token::Type> Token::m_keywords = {

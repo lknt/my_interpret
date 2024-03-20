@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include <iostream>
 #include <map>
 #include <memory>
 #include <string>
@@ -48,6 +49,7 @@ namespace pi
                 OBJECT_HASH,
                 OBJECT_FUNCTION,
                 OBJECT_RETURN,
+                OBJECT_BUILTIN,
             };
             Object(){}
             Object(Type type) : m_type(type) {}

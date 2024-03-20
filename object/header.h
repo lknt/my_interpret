@@ -14,3 +14,4 @@
 #include <object/hashable.h>
 #include <object/return.h>
 #include <object/function.h>
+#include <object/builtin.h>
