@@ -171,5 +171,15 @@ std::shared_ptr<Object> Builtin::_str(const std::vector<std::shared_ptr<Object>>
     return new_error("argument to `str` not supported, got: %s", arg->name().c_str());
 }
 std::shared_ptr<Object> Builtin::_exit(const std::vector<std::shared_ptr<Object>> & args){
-    return new_null();
+    if (args.size() != 1)
+    {
+        return new_error("wrong number of arguments. `type()` got=%d", args.size());
+    }
+    auto arg =args[0];
+    if (arg->type() != Object::OBJECT_INTEGER)
+    {
+        return new_error("aurgument to `exit()` not supported, got %s", arg->name().c_str());
+    }
+    auto obj = std::dynamic_pointer_cast<Integer>(arg);
+    ::exit((int)obj->m_value);
 }
