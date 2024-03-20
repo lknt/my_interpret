@@ -8,5 +8,12 @@ std::shared_ptr<Object> Evaluator::eval_identifier(const std::shared_ptr<ast::Id
     {
         return obj;
     }
+
+    auto builtin = object::Builtin::find(node->m_value);
+    if (builtin)
+    {
+        return builtin;
+    }
+
     return new_error("identifier not found %s", node->m_value.c_str());
 }

@@ -20,6 +20,7 @@ std::map<Object::Type, string> Object::m_names = {
         {OBJECT_HASH, "hash"},
         {OBJECT_FUNCTION, "function"},
         {OBJECT_RETURN, "return"},
+        {OBJECT_BUILTIN, "builtin"},
 };
 
 string Object::name() const {

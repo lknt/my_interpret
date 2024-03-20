@@ -48,6 +48,19 @@ std::shared_ptr<Object> Evaluator::eval_call(const std::shared_ptr<ast::Call> &n
             }
             break;
         }
+        case Object::OBJECT_BUILTIN:
+        {
+            //内置函数调用,参数准备
+            for (int i = 0; i < node->m_arguments.size(); ++i) {
+                auto arg = eval(node->m_arguments[i], env);
+                if (is_error(arg))
+                {
+                    return arg;
+                }
+                args.push_back(arg);
+            }
+            break;
+        }
         default:
         {
             return new_error("not a callable object : %s", obj->name().c_str());
@@ -73,6 +86,11 @@ std::shared_ptr<Object> Evaluator::apply_function(const std::shared_ptr<Object> 
                 return ret->m_value;
             }
             return obj;
+        }
+        case Object::OBJECT_BUILTIN:
+        {
+            auto builtin = std::dynamic_pointer_cast<object::Builtin>(fn);
+            return builtin->call(args);
         }
         default:
         {
