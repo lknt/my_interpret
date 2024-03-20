@@ -28,3 +28,4 @@
 #include <ast/return.h>
 #include <ast/function.h>
 #include <ast/call.h>
+#include <ast/method.h>

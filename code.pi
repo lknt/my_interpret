@@ -1,2 +1,1 @@
-print(2342)
-exit(-1)
+"hello".len()

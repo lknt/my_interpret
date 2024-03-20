@@ -99,6 +99,10 @@ namespace pi
             std::shared_ptr<Object> eval_string_index_expression(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index);
             std::shared_ptr<Object> eval_hash_index_expression(const std::shared_ptr<Object> & left, const std::shared_ptr<Object> & index);
 
+            //method
+            std::shared_ptr<Object> eval_method(const std::shared_ptr<ast::Method> & node, Environment * env);
+            std::shared_ptr<Object> apply_method(const std::shared_ptr<Object> & obj, const std::shared_ptr<ast::Expression> & method, const std::vector<std::shared_ptr<Object>> & args);
+
             //index assign
             std::shared_ptr<Object> eval_index_assignment(const std::shared_ptr<ast::Index> & name, const std::shared_ptr<Object> & val, Environment * env);
             //property assignment

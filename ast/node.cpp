@@ -41,6 +41,8 @@ std::map<Node::Type, string> Node::m_names = {
 
         {NODE_CALL, "Call"},
 
+        {NODE_METHOD, "method"},
+
 };
 
 string Node::name() const

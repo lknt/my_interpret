@@ -1,1 +1,1 @@
-{"statements":[{"expresion":{"arguments":[{"type":"String","value":"hello"}],"function":{"type":"identifier","value":"print"},"type":"Call"},"type":"Expression"}],"type":"Program"}
+{"statements":[{"expresion":{"arguments":null,"method":{"type":"identifier","value":"len"},"object":{"type":"String","value":"hello"},"type":"method"},"type":"Expression"}],"type":"Program"}

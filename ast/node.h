@@ -69,6 +69,8 @@ namespace pi
 
                 NODE_CALL,
 
+                NODE_METHOD,
+
             };
             Node() {}
             Node(Type type) : m_type(type){}
