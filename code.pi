@@ -1,2 +1,1 @@
-list=[1,3,4]
-len(list)
+int(1.56)
