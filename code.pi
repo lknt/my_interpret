@@ -1,1 +1,2 @@
-type(123)
+list=[1,3,4]
+len(list)

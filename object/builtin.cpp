@@ -1,4 +1,7 @@
 #include <object/builtin.h>
+#include <object/string.h>
+#include <object/list.h>
+#include <object/hash.h>
 using namespace pi::object;
 
 std::map<string, Builtin::method> Builtin::m_methods = {
@@ -51,7 +54,31 @@ std::shared_ptr<Object> Builtin::_type(const std::vector<std::shared_ptr<Object>
 }
 
 std::shared_ptr<Object> Builtin::_len(const std::vector<std::shared_ptr<Object>> & args){
-    return new_null();
+    if (args.size() != 1)
+    {
+        return new_error("wrong number of arguments. `type()` got=%d", args.size());
+    }
+    auto arg =args[0];
+    switch (arg->type()) {
+        case Object::OBJECT_STRING:
+        {
+            auto obj = std::dynamic_pointer_cast<String>(arg);
+            return new_integer((int64_t)obj->m_value.size());
+        }
+        case Object::OBJECT_LIST:
+        {
+            auto obj = std::dynamic_pointer_cast<List>(arg);
+            return new_integer((int64_t)obj->m_elements.size());
+        }
+        case Object::OBJECT_HASH:
+        {
+            auto obj = std::dynamic_pointer_cast<Hash>(arg);
+            return new_integer((int64_t)obj->m_pairs.size());
+        }
+        default:
+            break;
+    }
+    return new_error("argument to `len` not supported, got: %s", arg->name().c_str());
 }
 std::shared_ptr<Object> Builtin::_int(const std::vector<std::shared_ptr<Object>> & args){
     return new_null();
