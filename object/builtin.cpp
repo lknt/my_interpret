@@ -149,7 +149,26 @@ std::shared_ptr<Object> Builtin::_float(const std::vector<std::shared_ptr<Object
     return new_error("argument to `float` not supported, got: %s", arg->name().c_str());
 }
 std::shared_ptr<Object> Builtin::_str(const std::vector<std::shared_ptr<Object>> & args){
-    return new_null();
+    if (args.size() != 1)
+    {
+        return new_error("wrong number of arguments. `type()` got=%d", args.size());
+    }
+    auto arg =args[0];
+    switch (arg->type()) {
+        case Object::OBJECT_BOOL:
+        case Object::OBJECT_INTEGER:
+        case Object::OBJECT_FLOAT:
+        case Object::OBJECT_STRING:
+        case Object::OBJECT_LIST:
+        case Object::OBJECT_HASH:
+        case Object::OBJECT_NULL:
+        {
+            return new_string(arg->str());
+        }
+        default:
+            break;
+    }
+    return new_error("argument to `str` not supported, got: %s", arg->name().c_str());
 }
 std::shared_ptr<Object> Builtin::_exit(const std::vector<std::shared_ptr<Object>> & args){
     return new_null();
