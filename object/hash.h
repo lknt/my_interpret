@@ -2,7 +2,7 @@
 
 #include <object/object.h>
 #include <object/hashable.h>
-
+#include <object/iterable.h>
 namespace pi
 {
     namespace object
@@ -23,9 +23,11 @@ namespace pi
         class Hash : public Object
         {
         public:
-            Hash() : Object(OBJECT_HASH) {}
+            Hash() : Object(OBJECT_HASH), m_offset(0) {}
             ~Hash() {}
             virtual string str() const;
+            virtual std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> next();
+            virtual void reset();
 
             typedef std::shared_ptr<Object> (Hash::*method)(const std::vector<std::shared_ptr<Object>> &);
             std::shared_ptr<Object> call(const string & method, const std::vector<std::shared_ptr<Object>> & args);
@@ -45,6 +47,7 @@ namespace pi
         public:
             std::map<HashKey, HashPair> m_pairs;
             static std::map<string, method> m_methods;
+            int m_offset;
         };
     }
 }

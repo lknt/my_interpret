@@ -267,3 +267,20 @@ std::shared_ptr<Object> String::_replace(const std::vector<std::shared_ptr<Objec
     }
     return new_string(str);
 }
+
+std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> String::next()
+{
+    if (m_offset < m_value.size())
+    {
+        std::shared_ptr<Integer> first(new Integer(m_offset));
+        auto second = new_string(m_value.substr(m_offset, 1));
+        m_offset ++;
+        std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> pair(first, second);
+        return pair;
+    }
+    return std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> (nullptr, nullptr);
+}
+void String::reset()
+{
+    m_offset = 0;
+}

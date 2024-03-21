@@ -218,3 +218,21 @@ std::shared_ptr<Object> Hash::_json(const std::vector<std::shared_ptr<Object>> &
 
     return new_string(str());
 }
+
+std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> Hash::next()
+{
+    if (m_offset < m_pairs.size())
+    {
+        auto it = m_pairs.begin();
+        for (int i = 0; i < m_offset; i ++)
+        {
+            ++ it;
+        }
+        return std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> (it->second.m_key, it->second.m_value);
+    }
+    return std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> (nullptr, nullptr);
+}
+void List::reset()
+{
+    m_offset = 0;
+}

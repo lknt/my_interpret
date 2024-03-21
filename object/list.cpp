@@ -226,3 +226,20 @@ std::shared_ptr<Object> List::_json(const std::vector<std::shared_ptr<Object>> &
     return new_string(str());
 }
 
+
+std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> List::next()
+{
+    if (m_offset < m_elements.size())
+    {
+        std::shared_ptr<Integer> first(new Integer(m_offset));
+        auto second = m_elements[m_offset];
+        m_offset ++;
+        std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> pair(first, second);
+        return pair;
+    }
+    return std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> (nullptr, nullptr);
+}
+void List::reset()
+{
+    m_offset = 0;
+}
