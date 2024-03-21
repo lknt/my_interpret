@@ -22,6 +22,7 @@ bool Evaluator::is_true(const std::shared_ptr<Object> &obj) {
             return b->m_value == true;
         }
     }
+    return false;
 
 }
 std::shared_ptr<Object> Evaluator::new_error(const char * format, ...)
