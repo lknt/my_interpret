@@ -128,6 +128,8 @@ namespace pi
             std::shared_ptr<Expression> parse_if();
             std::shared_ptr<Expression> parse_while();
             std::shared_ptr<Expression> parse_for();
+            std::shared_ptr<Expression> parse_foreach(const Token & token);
+
             std::shared_ptr<Expression> parse_switch();
             std::shared_ptr<Expression> parse_list();
             std::shared_ptr<Expression> parse_hash();

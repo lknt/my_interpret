@@ -71,6 +71,8 @@ namespace pi
 
                 NODE_METHOD,
 
+                NODE_FOREACH,
+
             };
             Node() {}
             Node(Type type) : m_type(type){}

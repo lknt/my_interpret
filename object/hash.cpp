@@ -232,7 +232,7 @@ std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> Hash::next()
     }
     return std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> (nullptr, nullptr);
 }
-void List::reset()
+void Hash::reset()
 {
     m_offset = 0;
 }

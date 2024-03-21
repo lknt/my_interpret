@@ -5,9 +5,18 @@ using namespace pi::parser;
 /*写parse_integer函数*/
 
 std::shared_ptr<Expression> Parser::parse_for() {
-    std::shared_ptr<For> e(new For());
-    e->m_token = m_curr;
+    Token token = m_curr;
     next_token();
+    if (curr_token_is(Token::TOKEN_IDENTIFIER))
+    {
+        if (peek_token_is(Token::TOKEN_COMMA) || peek_token_is(Token::TOKEN_IN))
+        {
+            return parse_foreach(token);
+        }
+    }
+    std::shared_ptr<For> e(new For());
+    e->m_token = token;
+//    next_token();
     e->m_starter = parse_expression(LOWEST);
     if (!e->m_starter)
     {

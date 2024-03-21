@@ -43,6 +43,8 @@ std::map<Node::Type, string> Node::m_names = {
 
         {NODE_METHOD, "method"},
 
+        {NODE_FOREACH, "foreach"},
+
 };
 
 string Node::name() const

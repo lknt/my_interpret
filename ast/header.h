@@ -29,3 +29,4 @@
 #include <ast/function.h>
 #include <ast/call.h>
 #include <ast/method.h>
+#include <ast/foreach.h>

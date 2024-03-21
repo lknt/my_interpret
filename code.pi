@@ -1,4 +1,4 @@
-hash = {1:2,3:4,5:6}
-hash.set(6,9)
-
-hash.json()
+list = [1,2,3]
+for k,v in list {
+    print(k,v)
+}
