@@ -1,1 +1,1 @@
-"hello".len()
+"abcdefg".replace("a","b")

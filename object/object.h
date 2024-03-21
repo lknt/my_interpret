@@ -10,6 +10,7 @@
 #include <cstdarg>
 #include <vector>
 #include <list>
+#include <algorithm>
 
 using std::string;
 

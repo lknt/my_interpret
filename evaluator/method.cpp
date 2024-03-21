@@ -29,7 +29,8 @@ std::shared_ptr<Object> Evaluator::apply_method(const std::shared_ptr<Object> & 
     switch (obj->type()) {
         case Object::OBJECT_STRING:
         {
-            return new_string("string method");
+            auto o = std::dynamic_pointer_cast<object::String>(obj);
+            return o->call(m->m_value, args);
         }
         case Object::OBJECT_LIST:
         {

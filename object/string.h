@@ -27,8 +27,24 @@ namespace pi
                 return h;
             }
 
+            typedef std::shared_ptr<Object> (String::*method)(const std::vector<std::shared_ptr<Object>> &);
+            std::shared_ptr<Object> call(const string & method, const std::vector<std::shared_ptr<Object>> & args);
+
+        private:
+            std::shared_ptr<Object> _len(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _upper(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _lower(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _split(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _find(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _index(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _prefix(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _suffix(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _trim(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _repeat(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _replace(const std::vector<std::shared_ptr<Object>> & args);
         public:
             string m_value;
+            static std::map<string, method> m_methods;
         };
     }
 }
