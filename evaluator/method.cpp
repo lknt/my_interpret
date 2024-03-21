@@ -34,7 +34,8 @@ std::shared_ptr<Object> Evaluator::apply_method(const std::shared_ptr<Object> & 
         }
         case Object::OBJECT_LIST:
         {
-            return new_string("list method");
+            auto o = std::dynamic_pointer_cast<object::List>(obj);
+            return o->call(m->m_value, args);
         }
         case Object::OBJECT_HASH:
         {

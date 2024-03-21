@@ -1,1 +1,5 @@
-"abcdefg".replace("a","b")
+list=[1,2]
+list.append(3,4,5)
+print(list)
+print(list.join("*"))
+print(list)
