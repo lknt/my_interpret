@@ -3,6 +3,8 @@
 #include <object/object.h>
 #include <object/hashable.h>
 #include <object/iterable.h>
+#include <object/copyable.h>
+
 namespace pi
 {
     namespace object
@@ -20,7 +22,7 @@ namespace pi
             std::shared_ptr<Object> m_value;
         };
 
-        class Hash : public Object
+        class Hash : public Object, public Copyable
         {
         public:
             Hash() : Object(OBJECT_HASH), m_offset(0) {}
@@ -28,6 +30,7 @@ namespace pi
             virtual string str() const;
             virtual std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> next();
             virtual void reset();
+            virtual std::shared_ptr<Object> copy();
 
             typedef std::shared_ptr<Object> (Hash::*method)(const std::vector<std::shared_ptr<Object>> &);
             std::shared_ptr<Object> call(const string & method, const std::vector<std::shared_ptr<Object>> & args);
@@ -43,6 +46,7 @@ namespace pi
             std::shared_ptr<Object> _remove(const std::vector<std::shared_ptr<Object>> & args);
             std::shared_ptr<Object> _clear(const std::vector<std::shared_ptr<Object>> & args);
             std::shared_ptr<Object> _json(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _copy(const std::vector<std::shared_ptr<Object>> & args);
 
         public:
             std::map<HashKey, HashPair> m_pairs;

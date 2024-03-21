@@ -13,6 +13,7 @@ std::map<string, Hash::method> Hash::m_methods = {
         {"remove",         &Hash::_remove},
         {"clear",         &Hash::_clear},
         {"json",         &Hash::_json},
+        {"copy",        &Hash::_copy},
 };
 
 
@@ -235,4 +236,43 @@ std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> Hash::next()
 void Hash::reset()
 {
     m_offset = 0;
+}
+std::shared_ptr<Object> Hash::copy()
+{
+    std::shared_ptr<Hash> hash(new Hash());
+    for (auto & pair : m_pairs)
+    {
+        auto key = std::dynamic_pointer_cast<Copyable>(pair.second.m_key);
+        if (!key)
+        {
+            return new_error("object not support copyable: %s", pair.second.m_key->name().c_str());
+        }
+        auto val = std::dynamic_pointer_cast<Copyable>(pair.second.m_value);
+        if (!val)
+        {
+            return new_error("object not support copyable: %s", pair.second.m_value->name().c_str());
+        }
+        auto copy_key = key->copy();
+        auto copy_val = val->copy();
+        HashPair copy_pair;
+        copy_pair.m_key = copy_key;
+        copy_pair.m_value = copy_val;
+
+        auto hashable = std::dynamic_pointer_cast<Hashable>(copy_key);
+        if (!hashable)
+        {
+            return new_error("object not support hashable: %s", copy_key->name().c_str());
+        }
+        hash->m_pairs[hashable->hash()] = copy_pair;
+    }
+    return hash;
+}
+
+std::shared_ptr<Object> Hash::_copy(const std::vector<std::shared_ptr<Object>> & args)
+{
+    if (args.size() != 0)
+    {
+        return new_error("wrong number of arguments. `hash.copy()` got=%d", args.size());
+    }
+    return copy();
 }

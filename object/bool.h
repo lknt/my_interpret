@@ -2,10 +2,12 @@
 
 #include <object/object.h>
 #include <object/hashable.h>
+#include <object/copyable.h>
+
 
 namespace pi {
     namespace object {
-        class Bool : public Object, public Hashable
+        class Bool : public Object, public Hashable, public Copyable
         {
         public:
             Bool() : Object(OBJECT_BOOL), m_value(false) {}
@@ -25,6 +27,10 @@ namespace pi {
                 h.m_type = type();
                 h.m_value = hash_code;
                 return h;
+            }
+            virtual std::shared_ptr<Object> copy()
+            {
+                return new_bool(m_value);
             }
 
         public:

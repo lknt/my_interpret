@@ -3,12 +3,14 @@
 #include <object/object.h>
 #include <object/hashable.h>
 #include <object/iterable.h>
+#include <object/copyable.h>
+
 
 namespace pi
 {
     namespace object
     {
-        class String : public Object, public Hashable, public Iterable
+        class String : public Object, public Hashable, public Iterable, public Copyable
         {
         public:
             String() : Object(OBJECT_STRING), m_offset(0) {}
@@ -26,6 +28,10 @@ namespace pi
                 h.m_type = type();
                 h.m_value = hash_code;
                 return h;
+            }
+            virtual std::shared_ptr<Object> copy()
+            {
+                return new_string(m_value);
             }
             virtual std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> next();
             virtual void reset();

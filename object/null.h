@@ -2,12 +2,14 @@
 
 #include <object/object.h>
 #include <object/hashable.h>
+#include <object/copyable.h>
+
 
 namespace pi
 {
     namespace object
     {
-        class Null : public Object, public Hashable
+        class Null : public Object, public Hashable, public Copyable
         {
         public:
             Null() : Object(OBJECT_NULL) {}
@@ -25,6 +27,10 @@ namespace pi
                 h.m_type = type();
                 h.m_value = hash_code;
                 return h;
+            }
+            virtual std::shared_ptr<Object> copy()
+            {
+                return new_null();
             }
         };
     }

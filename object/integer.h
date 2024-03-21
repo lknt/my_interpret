@@ -2,12 +2,14 @@
 
 #include <object/object.h>
 #include <object/hashable.h>
+#include <object/copyable.h>
+
 
 namespace pi
 {
     namespace object
     {
-        class Integer : public Object, public Hashable
+        class Integer : public Object, public Hashable, public Copyable
         {
         public:
             Integer() : Object(OBJECT_INTEGER), m_value(0) {}
@@ -26,6 +28,10 @@ namespace pi
                 h.m_type = type();
                 h.m_value = hash_code;
                 return h;
+            }
+            virtual std::shared_ptr<Object> copy()
+            {
+                return new_integer(m_value);
             }
         public:
             int64_t m_value;

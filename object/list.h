@@ -2,12 +2,14 @@
 
 #include <object/object.h>
 #include <object/iterable.h>
+#include <object/copyable.h>
+
 
 namespace pi
 {
     namespace object
     {
-        class List : public Object, public Iterable
+        class List : public Object, public Iterable, public Copyable
         {
         public:
             List() : Object(OBJECT_LIST), m_offset(0) {}
@@ -15,6 +17,7 @@ namespace pi
             virtual string str() const;
             virtual std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> next();
             virtual void reset();
+            virtual std::shared_ptr<Object> copy();
 
             typedef std::shared_ptr<Object> (List::*method)(const std::vector<std::shared_ptr<Object>> &);
             std::shared_ptr<Object> call(const string & method, const std::vector<std::shared_ptr<Object>> & args);
@@ -31,6 +34,7 @@ namespace pi
             std::shared_ptr<Object> _extend(const std::vector<std::shared_ptr<Object>> & args);
             std::shared_ptr<Object> _join(const std::vector<std::shared_ptr<Object>> & args);
             std::shared_ptr<Object> _json(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _copy(const std::vector<std::shared_ptr<Object>> & args);
 
         public:
             std::vector<std::shared_ptr<Object>> m_elements;

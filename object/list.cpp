@@ -3,6 +3,7 @@
 #include <object/string.h>
 #include <sstream>
 
+
 using namespace pi::object;
 
 std::map<string, List::method> List::m_methods ={
@@ -17,6 +18,7 @@ std::map<string, List::method> List::m_methods ={
         {"extend",      &List::_extend},
         {"join",        &List::_join},
         {"json",        &List::_json},
+        {"copy",        &List::_copy},
 };
 
 
@@ -242,4 +244,27 @@ std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> List::next()
 void List::reset()
 {
     m_offset = 0;
+}
+std::shared_ptr<Object> List::copy()
+{
+    std::shared_ptr<List> list(new List());
+    for (auto & elem : m_elements)
+    {
+        auto copyable = std::dynamic_pointer_cast<Copyable>(elem);
+        if (!copyable)
+        {
+            return new_error("object not support copyable: %s", elem->name().c_str());
+        }
+        list->m_elements.push_back(copyable->copy());
+    }
+    return list;
+}
+
+std::shared_ptr<Object> List::_copy(const std::vector<std::shared_ptr<Object>> & args)
+{
+    if (args.size() != 0)
+    {
+        return new_error("wrong number of arguments. `list.copy()` got %d", args.size());
+    }
+    return copy();
 }
