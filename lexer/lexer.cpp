@@ -285,8 +285,19 @@ Token Lexer::next_token() {
                 literal += m_ch;
                 return new_token(Token::TOKEN_SLASH_ASSIGN, literal);
             }
-            else {
-                string literal = "";
+            else if (peek_char() == '/')
+            {
+                skip_single_line_comment();
+                return next_token();
+            }
+            else if (peek_char() == '*')
+            {
+                skip_multi_line_comment();
+                return next_token();
+            }
+            else
+            {
+                string literal;
                 literal += m_ch;
                 return new_token(Token::TOKEN_SLASH, literal);
             }
@@ -594,6 +605,45 @@ Token Lexer::next_token() {
                 literal += m_ch;
                 return new_token(Token::TOKEN_ILLEGAL, literal);
             }
+        }
+    }
+}
+
+
+void Lexer::skip_single_line_comment()
+{
+    read_char();
+    while (true)
+    {
+        read_char();
+        if (m_ch == '\n' || m_ch == '\r' || m_ch == 0)
+        {
+            break;
+        }
+    }
+    m_line += 1;
+    m_column = 1;
+}
+
+void Lexer::skip_multi_line_comment()
+{
+    read_char();
+    while (true)
+    {
+        read_char();
+        if (m_ch == 0)
+        {
+            break;
+        }
+        else if (m_ch == '\n')
+        {
+            m_line += 1;
+            m_column = 1;
+        }
+        else if (m_ch == '*' && peek_char() == '/')
+        {
+            read_char();
+            break;
         }
     }
 }

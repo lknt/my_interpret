@@ -3,6 +3,8 @@ b = [5, 6, 7]
 
 a.append(b.copy())
 print('a = ', a)
-
-b.append(8)
+/*
+ewr
+afdas*/
+b.append(8)//asfsdafdasf
 print('a = ', a)

@@ -59,7 +59,8 @@ namespace pi
             string read_single_quote_string();
             string read_double_quote_string();
             Token new_token(Token::Type type, const string & literal);
-
+            void skip_single_line_comment();
+            void skip_multi_line_comment();
         public:
             string m_input;
             char m_ch;
