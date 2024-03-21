@@ -27,9 +27,24 @@ namespace pi
             ~Hash() {}
             virtual string str() const;
 
+            typedef std::shared_ptr<Object> (Hash::*method)(const std::vector<std::shared_ptr<Object>> &);
+            std::shared_ptr<Object> call(const string & method, const std::vector<std::shared_ptr<Object>> & args);
+
+        private:
+            std::shared_ptr<Object> _len(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _has(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _get(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _set(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _keys(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _values(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _update(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _remove(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _clear(const std::vector<std::shared_ptr<Object>> & args);
+            std::shared_ptr<Object> _json(const std::vector<std::shared_ptr<Object>> & args);
 
         public:
             std::map<HashKey, HashPair> m_pairs;
+            static std::map<string, method> m_methods;
         };
     }
 }

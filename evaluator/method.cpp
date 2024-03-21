@@ -39,7 +39,8 @@ std::shared_ptr<Object> Evaluator::apply_method(const std::shared_ptr<Object> & 
         }
         case Object::OBJECT_HASH:
         {
-            return new_string("hash method");
+            auto o = std::dynamic_pointer_cast<object::Hash>(obj);
+            return o->call(m->m_value, args);
         }
         default:
             break;
