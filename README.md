@@ -1,4 +1,4 @@
-用户手册
+### 用户手册
 
 源文件是code.pi
 
@@ -11,6 +11,8 @@
 运行eval_repl，可以进入repl模式
 
 example文件夹中有实例程序
+
+json文件可以在https://jsoncrack.com/网址查看其结构
 
 
 
