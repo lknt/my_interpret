@@ -1,0 +1,16 @@
+hash = {'name': 'jack', 'age': 18}
+a = {123 : 'abc', true: 'kitty', null: 456, 'name': 'jack'} // 可哈希的类型有，整形，bool型，null型，字符串型
+// 可直接对属性赋值，可直接使用.运算符操作属性
+hash.name = 'lucy'
+hash.age += 2
+hash.height = 170
+
+print(hash)
+
+// 可以使用索引访问
+hash = {'name': 'jack', 'age': 18}
+print(hash['name'])
+print(hash['age'])
+
+// 使用in运算符
+print('name' in hash)

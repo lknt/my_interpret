@@ -1,0 +1,14 @@
+a = 0
+name = null
+switch a {
+    default:
+        name = 'sean'
+    case 1:
+        name = 'jack'
+    case 2:
+        name = 'lucy'
+    case 3, 4:
+        name = 'lily'
+        break
+}
+name

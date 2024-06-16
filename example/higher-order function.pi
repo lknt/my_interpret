@@ -1,0 +1,14 @@
+add = fn(x, y) {
+    return x + y
+}
+
+sub = fn(x, y) {
+    return x - y
+}
+
+foo = fn(x, y, f) {
+    return f(x, y)
+}
+
+print(foo(5, 3, add))
+print(foo(5, 3, sub))

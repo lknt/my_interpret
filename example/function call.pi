@@ -1,0 +1,7 @@
+sum = fn(x, y) {
+    a = 1
+    return x + y
+}
+
+total = sum(1, 2) // 函数调用
+print(total)

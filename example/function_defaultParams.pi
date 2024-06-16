@@ -1,0 +1,4 @@
+f = fn(x, y = 1) {
+    return x + y
+}
+print(f(1))

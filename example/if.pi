@@ -1,0 +1,11 @@
+a = 1
+b = 1
+
+if a < b {
+    c = 'less than'
+} else if a > b {
+    c = 'great than'
+} else {
+    c = 'equal'
+}
+print(c)

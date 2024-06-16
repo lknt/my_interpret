@@ -1,0 +1,8 @@
+f = fn(x) {
+    return fn(y) {
+        return x + y
+    }
+}
+
+f1 = f(2)
+f1(3)

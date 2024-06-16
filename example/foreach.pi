@@ -1,0 +1,14 @@
+s = "hello"
+for k, v in s {
+    print(k, v)
+}
+
+list = [1, 2, 3]
+for k, v in list {
+    print(k, v)
+}
+
+hash = {'a': 1, 'b': 2, 'c': 3}
+for k, v in hash {
+    print(k, v)
+}
