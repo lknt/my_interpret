@@ -22,7 +22,7 @@ namespace pi
             std::shared_ptr<Object> m_value;
         };
 
-        class Hash : public Object, public Copyable
+        class Hash : public Object, public Iterable, public Copyable
         {
         public:
             Hash() : Object(OBJECT_HASH), m_offset(0) {}

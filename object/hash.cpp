@@ -229,6 +229,7 @@ std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> Hash::next()
         {
             ++ it;
         }
+        m_offset ++;
         return std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> (it->second.m_key, it->second.m_value);
     }
     return std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>> (nullptr, nullptr);
