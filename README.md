@@ -1,5 +1,9 @@
 ### 用户手册
-
+启动指令
+```
+cmake .
+make
+```
 源文件是code.pi
 
 运行my_interpret,可以看到源文件的所有token，并且更新token.json
@@ -12,7 +16,9 @@
 
 example文件夹中有实例程序
 
-json文件可以在https://jsoncrack.com/网址查看其结构
+json文件可以在https://jsoncrack.com/
+
+网址查看其结构
 
 
 
